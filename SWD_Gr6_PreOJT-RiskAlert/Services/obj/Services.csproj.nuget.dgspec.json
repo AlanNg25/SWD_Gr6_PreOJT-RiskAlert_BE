@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert\\Services\\Services.csproj": {}
+    "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Services\\Services.csproj": {}
   },
   "projects": {
-    "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert\\Services\\Services.csproj": {
+    "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Services\\Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert\\Services\\Services.csproj",
+        "projectUniqueName": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Services\\Services.csproj",
         "projectName": "Services",
-        "projectPath": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert\\Services\\Services.csproj",
+        "projectPath": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Services\\Services.csproj",
         "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-        "outputPath": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert\\Services\\obj\\",
+        "outputPath": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Services\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

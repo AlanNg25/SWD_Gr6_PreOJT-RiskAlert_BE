@@ -16,8 +16,8 @@ namespace Repositories.Migrations
                 columns: table => new
                 {
                     ClassID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ClassCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ClassName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ClassCode = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    ClassName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -30,8 +30,8 @@ namespace Repositories.Migrations
                 columns: table => new
                 {
                     MajorID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    MajorCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MajorName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MajorCode = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    MajorName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -44,10 +44,11 @@ namespace Repositories.Migrations
                 columns: table => new
                 {
                     ProgramID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    ProgramName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ProgramName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MajorID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    MajorsMajorID = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -57,7 +58,12 @@ namespace Repositories.Migrations
                         column: x => x.MajorID,
                         principalTable: "majors",
                         principalColumn: "MajorID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_programs_majors_MajorsMajorID",
+                        column: x => x.MajorsMajorID,
+                        principalTable: "majors",
+                        principalColumn: "MajorID");
                 });
 
             migrationBuilder.CreateTable(
@@ -65,14 +71,15 @@ namespace Repositories.Migrations
                 columns: table => new
                 {
                     UserID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FullName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Phone = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false),
                     MajorID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Role = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Role = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    MajorsMajorID = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -82,7 +89,12 @@ namespace Repositories.Migrations
                         column: x => x.MajorID,
                         principalTable: "majors",
                         principalColumn: "MajorID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_users_majors_MajorsMajorID",
+                        column: x => x.MajorsMajorID,
+                        principalTable: "majors",
+                        principalColumn: "MajorID");
                 });
 
             migrationBuilder.CreateTable(
@@ -90,11 +102,12 @@ namespace Repositories.Migrations
                 columns: table => new
                 {
                     SubjectID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    SubjectCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    SubjectName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SubjectCode = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    SubjectName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     ProgramID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    ProgramsProgramID = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -104,7 +117,12 @@ namespace Repositories.Migrations
                         column: x => x.ProgramID,
                         principalTable: "programs",
                         principalColumn: "ProgramID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_subjects_programs_ProgramsProgramID",
+                        column: x => x.ProgramsProgramID,
+                        principalTable: "programs",
+                        principalColumn: "ProgramID");
                 });
 
             migrationBuilder.CreateTable(
@@ -118,7 +136,10 @@ namespace Repositories.Migrations
                     EnrollmentStatus = table.Column<int>(type: "int", nullable: false),
                     EnrollmentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    ClassesClassID = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    MajorsMajorID = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    UsersUserID = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -128,19 +149,34 @@ namespace Repositories.Migrations
                         column: x => x.ClassID,
                         principalTable: "classes",
                         principalColumn: "ClassID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_enrollments_classes_ClassesClassID",
+                        column: x => x.ClassesClassID,
+                        principalTable: "classes",
+                        principalColumn: "ClassID");
                     table.ForeignKey(
                         name: "FK_enrollments_majors_MajorID",
                         column: x => x.MajorID,
                         principalTable: "majors",
                         principalColumn: "MajorID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_enrollments_majors_MajorsMajorID",
+                        column: x => x.MajorsMajorID,
+                        principalTable: "majors",
+                        principalColumn: "MajorID");
                     table.ForeignKey(
                         name: "FK_enrollments_users_StudentID",
                         column: x => x.StudentID,
                         principalTable: "users",
                         principalColumn: "UserID",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_enrollments_users_UsersUserID",
+                        column: x => x.UsersUserID,
+                        principalTable: "users",
+                        principalColumn: "UserID");
                 });
 
             migrationBuilder.CreateTable(
@@ -148,22 +184,28 @@ namespace Repositories.Migrations
                 columns: table => new
                 {
                     NotificationID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    receiver = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ReceiverID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
-                    Attachment = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Attachment = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     SentTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    UsersUserID = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_notifications", x => x.NotificationID);
                     table.ForeignKey(
-                        name: "FK_notifications_users_receiver",
-                        column: x => x.receiver,
+                        name: "FK_notifications_users_ReceiverID",
+                        column: x => x.ReceiverID,
                         principalTable: "users",
                         principalColumn: "UserID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_notifications_users_UsersUserID",
+                        column: x => x.UsersUserID,
+                        principalTable: "users",
+                        principalColumn: "UserID");
                 });
 
             migrationBuilder.CreateTable(
@@ -171,11 +213,13 @@ namespace Repositories.Migrations
                 columns: table => new
                 {
                     CurriculumID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Term = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Term = table.Column<string>(type: "nvarchar(10)", maxLength: 10, nullable: false),
                     ProgramID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     SubjectID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Year = table.Column<int>(type: "int", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    ProgramsProgramID = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    SubjectsSubjectID = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -185,13 +229,23 @@ namespace Repositories.Migrations
                         column: x => x.ProgramID,
                         principalTable: "programs",
                         principalColumn: "ProgramID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_curriculums_programs_ProgramsProgramID",
+                        column: x => x.ProgramsProgramID,
+                        principalTable: "programs",
+                        principalColumn: "ProgramID");
                     table.ForeignKey(
                         name: "FK_curriculums_subjects_SubjectID",
                         column: x => x.SubjectID,
                         principalTable: "subjects",
                         principalColumn: "SubjectID",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_curriculums_subjects_SubjectsSubjectID",
+                        column: x => x.SubjectsSubjectID,
+                        principalTable: "subjects",
+                        principalColumn: "SubjectID");
                 });
 
             migrationBuilder.CreateTable(
@@ -203,7 +257,9 @@ namespace Repositories.Migrations
                     SubjectID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     GradeDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Score = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    SubjectsSubjectID = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    UsersUserID = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -213,13 +269,23 @@ namespace Repositories.Migrations
                         column: x => x.SubjectID,
                         principalTable: "subjects",
                         principalColumn: "SubjectID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_grades_subjects_SubjectsSubjectID",
+                        column: x => x.SubjectsSubjectID,
+                        principalTable: "subjects",
+                        principalColumn: "SubjectID");
                     table.ForeignKey(
                         name: "FK_grades_users_StudentID",
                         column: x => x.StudentID,
                         principalTable: "users",
                         principalColumn: "UserID",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_grades_users_UsersUserID",
+                        column: x => x.UsersUserID,
+                        principalTable: "users",
+                        principalColumn: "UserID");
                 });
 
             migrationBuilder.CreateTable(
@@ -229,11 +295,13 @@ namespace Repositories.Migrations
                     PredictionID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     StudentID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     SubjectID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    RiskLevel = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RiskLevel = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Probability = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     PredictionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Details = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    SubjectsSubjectID = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    UsersUserID = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -243,13 +311,23 @@ namespace Repositories.Migrations
                         column: x => x.SubjectID,
                         principalTable: "subjects",
                         principalColumn: "SubjectID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_predictions_subjects_SubjectsSubjectID",
+                        column: x => x.SubjectsSubjectID,
+                        principalTable: "subjects",
+                        principalColumn: "SubjectID");
                     table.ForeignKey(
                         name: "FK_predictions_users_StudentID",
                         column: x => x.StudentID,
                         principalTable: "users",
                         principalColumn: "UserID",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_predictions_users_UsersUserID",
+                        column: x => x.UsersUserID,
+                        principalTable: "users",
+                        principalColumn: "UserID");
                 });
 
             migrationBuilder.CreateTable(
@@ -261,7 +339,8 @@ namespace Repositories.Migrations
                     SessionNo = table.Column<int>(type: "int", nullable: false),
                     SessionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     MeetLink = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    SubjectsSubjectID = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -271,7 +350,12 @@ namespace Repositories.Migrations
                         column: x => x.SubjectID,
                         principalTable: "subjects",
                         principalColumn: "SubjectID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_sessions_subjects_SubjectsSubjectID",
+                        column: x => x.SubjectsSubjectID,
+                        principalTable: "subjects",
+                        principalColumn: "SubjectID");
                 });
 
             migrationBuilder.CreateTable(
@@ -281,7 +365,10 @@ namespace Repositories.Migrations
                     SubjectInClassID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ClassID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TeacherID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    SubjectID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    SubjectID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    ClassesClassID = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    SubjectsSubjectID = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    UsersUserID = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -291,19 +378,34 @@ namespace Repositories.Migrations
                         column: x => x.ClassID,
                         principalTable: "classes",
                         principalColumn: "ClassID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_subjectInClasses_classes_ClassesClassID",
+                        column: x => x.ClassesClassID,
+                        principalTable: "classes",
+                        principalColumn: "ClassID");
                     table.ForeignKey(
                         name: "FK_subjectInClasses_subjects_SubjectID",
                         column: x => x.SubjectID,
                         principalTable: "subjects",
                         principalColumn: "SubjectID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_subjectInClasses_subjects_SubjectsSubjectID",
+                        column: x => x.SubjectsSubjectID,
+                        principalTable: "subjects",
+                        principalColumn: "SubjectID");
                     table.ForeignKey(
                         name: "FK_subjectInClasses_users_TeacherID",
                         column: x => x.TeacherID,
                         principalTable: "users",
                         principalColumn: "UserID",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_subjectInClasses_users_UsersUserID",
+                        column: x => x.UsersUserID,
+                        principalTable: "users",
+                        principalColumn: "UserID");
                 });
 
             migrationBuilder.CreateTable(
@@ -312,16 +414,16 @@ namespace Repositories.Migrations
                 {
                     SyllabusID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     SubjectID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    SyllabusName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    SyllabusName = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     PrerequisitesSubjectID = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     IsApproved = table.Column<bool>(type: "bit", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    StudentTasks = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ScoringCondition = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TYPES = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    StudentTasks = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    ScoringCondition = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    TYPES = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     CreditHours = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    PrerequisiteSyllabusID = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    SubjectsSubjectID = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -331,10 +433,15 @@ namespace Repositories.Migrations
                         column: x => x.SubjectID,
                         principalTable: "subjects",
                         principalColumn: "SubjectID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_syllabus_syllabus_PrerequisiteSyllabusID",
-                        column: x => x.PrerequisiteSyllabusID,
+                        name: "FK_syllabus_subjects_SubjectsSubjectID",
+                        column: x => x.SubjectsSubjectID,
+                        principalTable: "subjects",
+                        principalColumn: "SubjectID");
+                    table.ForeignKey(
+                        name: "FK_syllabus_syllabus_PrerequisitesSubjectID",
+                        column: x => x.PrerequisitesSubjectID,
                         principalTable: "syllabus",
                         principalColumn: "SyllabusID",
                         onDelete: ReferentialAction.Restrict);
@@ -346,11 +453,12 @@ namespace Repositories.Migrations
                 {
                     GradeDetailID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     GradeID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    GradeType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    GradeType = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     Score = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     ScoreWeight = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     MinScr = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    GradesGradeID = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -360,7 +468,12 @@ namespace Repositories.Migrations
                         column: x => x.GradeID,
                         principalTable: "grades",
                         principalColumn: "GradeID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_gradeDetails_grades_GradesGradeID",
+                        column: x => x.GradesGradeID,
+                        principalTable: "grades",
+                        principalColumn: "GradeID");
                 });
 
             migrationBuilder.CreateTable(
@@ -369,11 +482,12 @@ namespace Repositories.Migrations
                 {
                     AttendanceID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     StudentID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Note = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Status = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Note = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     SessionID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     WeekNumber = table.Column<int>(type: "int", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    UsersUserID = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -383,13 +497,18 @@ namespace Repositories.Migrations
                         column: x => x.SessionID,
                         principalTable: "sessions",
                         principalColumn: "SessionID",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_attendances_users_StudentID",
                         column: x => x.StudentID,
                         principalTable: "users",
                         principalColumn: "UserID",
                         onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_attendances_users_UsersUserID",
+                        column: x => x.UsersUserID,
+                        principalTable: "users",
+                        principalColumn: "UserID");
                 });
 
             migrationBuilder.CreateIndex(
@@ -403,14 +522,34 @@ namespace Repositories.Migrations
                 column: "StudentID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_attendances_UsersUserID",
+                table: "attendances",
+                column: "UsersUserID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_curriculums_ProgramID",
                 table: "curriculums",
                 column: "ProgramID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_curriculums_ProgramsProgramID",
+                table: "curriculums",
+                column: "ProgramsProgramID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_curriculums_SubjectID",
                 table: "curriculums",
                 column: "SubjectID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_curriculums_SubjectsSubjectID",
+                table: "curriculums",
+                column: "SubjectsSubjectID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_enrollments_ClassesClassID",
+                table: "enrollments",
+                column: "ClassesClassID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_enrollments_ClassID",
@@ -423,14 +562,29 @@ namespace Repositories.Migrations
                 column: "MajorID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_enrollments_MajorsMajorID",
+                table: "enrollments",
+                column: "MajorsMajorID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_enrollments_StudentID",
                 table: "enrollments",
                 column: "StudentID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_enrollments_UsersUserID",
+                table: "enrollments",
+                column: "UsersUserID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_gradeDetails_GradeID",
                 table: "gradeDetails",
                 column: "GradeID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_gradeDetails_GradesGradeID",
+                table: "gradeDetails",
+                column: "GradesGradeID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_grades_StudentID",
@@ -443,9 +597,24 @@ namespace Repositories.Migrations
                 column: "SubjectID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_notifications_receiver",
+                name: "IX_grades_SubjectsSubjectID",
+                table: "grades",
+                column: "SubjectsSubjectID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_grades_UsersUserID",
+                table: "grades",
+                column: "UsersUserID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_notifications_ReceiverID",
                 table: "notifications",
-                column: "receiver");
+                column: "ReceiverID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_notifications_UsersUserID",
+                table: "notifications",
+                column: "UsersUserID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_predictions_StudentID",
@@ -458,14 +627,39 @@ namespace Repositories.Migrations
                 column: "SubjectID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_predictions_SubjectsSubjectID",
+                table: "predictions",
+                column: "SubjectsSubjectID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_predictions_UsersUserID",
+                table: "predictions",
+                column: "UsersUserID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_programs_MajorID",
                 table: "programs",
                 column: "MajorID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_programs_MajorsMajorID",
+                table: "programs",
+                column: "MajorsMajorID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_sessions_SubjectID",
                 table: "sessions",
                 column: "SubjectID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_sessions_SubjectsSubjectID",
+                table: "sessions",
+                column: "SubjectsSubjectID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_subjectInClasses_ClassesClassID",
+                table: "subjectInClasses",
+                column: "ClassesClassID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_subjectInClasses_ClassID",
@@ -478,9 +672,19 @@ namespace Repositories.Migrations
                 column: "SubjectID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_subjectInClasses_SubjectsSubjectID",
+                table: "subjectInClasses",
+                column: "SubjectsSubjectID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_subjectInClasses_TeacherID",
                 table: "subjectInClasses",
                 column: "TeacherID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_subjectInClasses_UsersUserID",
+                table: "subjectInClasses",
+                column: "UsersUserID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_subjects_ProgramID",
@@ -488,9 +692,14 @@ namespace Repositories.Migrations
                 column: "ProgramID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_syllabus_PrerequisiteSyllabusID",
+                name: "IX_subjects_ProgramsProgramID",
+                table: "subjects",
+                column: "ProgramsProgramID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_syllabus_PrerequisitesSubjectID",
                 table: "syllabus",
-                column: "PrerequisiteSyllabusID");
+                column: "PrerequisitesSubjectID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_syllabus_SubjectID",
@@ -498,9 +707,19 @@ namespace Repositories.Migrations
                 column: "SubjectID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_syllabus_SubjectsSubjectID",
+                table: "syllabus",
+                column: "SubjectsSubjectID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_users_MajorID",
                 table: "users",
                 column: "MajorID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_users_MajorsMajorID",
+                table: "users",
+                column: "MajorsMajorID");
         }
 
         /// <inheritdoc />

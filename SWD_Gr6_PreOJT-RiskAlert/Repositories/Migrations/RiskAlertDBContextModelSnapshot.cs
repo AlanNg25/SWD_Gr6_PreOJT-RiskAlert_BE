@@ -33,16 +33,21 @@ namespace Repositories.Migrations
 
                     b.Property<string>("Note")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<Guid>("SessionID")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Status")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<Guid>("StudentID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("UsersUserID")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("WeekNumber")
@@ -53,6 +58,8 @@ namespace Repositories.Migrations
                     b.HasIndex("SessionID");
 
                     b.HasIndex("StudentID");
+
+                    b.HasIndex("UsersUserID");
 
                     b.ToTable("attendances");
                 });
@@ -65,11 +72,13 @@ namespace Repositories.Migrations
 
                     b.Property<string>("ClassCode")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("ClassName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -91,12 +100,19 @@ namespace Repositories.Migrations
                     b.Property<Guid>("ProgramID")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("ProgramsProgramID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid>("SubjectID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("SubjectsSubjectID")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Term")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<int>("Year")
                         .HasColumnType("int");
@@ -105,7 +121,11 @@ namespace Repositories.Migrations
 
                     b.HasIndex("ProgramID");
 
+                    b.HasIndex("ProgramsProgramID");
+
                     b.HasIndex("SubjectID");
+
+                    b.HasIndex("SubjectsSubjectID");
 
                     b.ToTable("curriculums");
                 });
@@ -117,6 +137,9 @@ namespace Repositories.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("ClassID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("ClassesClassID")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("EnrollmentDate")
@@ -131,6 +154,9 @@ namespace Repositories.Migrations
                     b.Property<Guid>("MajorID")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("MajorsMajorID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Status")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -138,13 +164,22 @@ namespace Repositories.Migrations
                     b.Property<Guid>("StudentID")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("UsersUserID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("EnrollmentID");
 
                     b.HasIndex("ClassID");
 
+                    b.HasIndex("ClassesClassID");
+
                     b.HasIndex("MajorID");
 
+                    b.HasIndex("MajorsMajorID");
+
                     b.HasIndex("StudentID");
+
+                    b.HasIndex("UsersUserID");
 
                     b.ToTable("enrollments");
                 });
@@ -160,7 +195,11 @@ namespace Repositories.Migrations
 
                     b.Property<string>("GradeType")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.Property<Guid?>("GradesGradeID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -177,6 +216,8 @@ namespace Repositories.Migrations
                     b.HasKey("GradeDetailID");
 
                     b.HasIndex("GradeID");
+
+                    b.HasIndex("GradesGradeID");
 
                     b.ToTable("gradeDetails");
                 });
@@ -202,11 +243,21 @@ namespace Repositories.Migrations
                     b.Property<Guid>("SubjectID")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("SubjectsSubjectID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("UsersUserID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("GradeID");
 
                     b.HasIndex("StudentID");
 
                     b.HasIndex("SubjectID");
+
+                    b.HasIndex("SubjectsSubjectID");
+
+                    b.HasIndex("UsersUserID");
 
                     b.ToTable("grades");
                 });
@@ -222,11 +273,13 @@ namespace Repositories.Migrations
 
                     b.Property<string>("MajorCode")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("MajorName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("MajorID");
 
@@ -241,7 +294,8 @@ namespace Repositories.Migrations
 
                     b.Property<string>("Attachment")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("Content")
                         .IsRequired()
@@ -250,18 +304,23 @@ namespace Repositories.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<Guid>("ReceiverID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTime>("SentTime")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("receiver")
+                    b.Property<Guid?>("UsersUserID")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("NotificationID");
 
-                    b.HasIndex("receiver");
+                    b.HasIndex("ReceiverID");
+
+                    b.HasIndex("UsersUserID");
 
                     b.ToTable("notifications");
                 });
@@ -287,7 +346,8 @@ namespace Repositories.Migrations
 
                     b.Property<string>("RiskLevel")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<Guid>("StudentID")
                         .HasColumnType("uniqueidentifier");
@@ -295,11 +355,21 @@ namespace Repositories.Migrations
                     b.Property<Guid>("SubjectID")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("SubjectsSubjectID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("UsersUserID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("PredictionID");
 
                     b.HasIndex("StudentID");
 
                     b.HasIndex("SubjectID");
+
+                    b.HasIndex("SubjectsSubjectID");
+
+                    b.HasIndex("UsersUserID");
 
                     b.ToTable("predictions");
                 });
@@ -320,13 +390,19 @@ namespace Repositories.Migrations
                     b.Property<Guid>("MajorID")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("MajorsMajorID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("ProgramName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.HasKey("ProgramID");
 
                     b.HasIndex("MajorID");
+
+                    b.HasIndex("MajorsMajorID");
 
                     b.ToTable("programs");
                 });
@@ -353,9 +429,14 @@ namespace Repositories.Migrations
                     b.Property<Guid>("SubjectID")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("SubjectsSubjectID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("SessionID");
 
                     b.HasIndex("SubjectID");
+
+                    b.HasIndex("SubjectsSubjectID");
 
                     b.ToTable("sessions");
                 });
@@ -369,19 +450,34 @@ namespace Repositories.Migrations
                     b.Property<Guid>("ClassID")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("ClassesClassID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid>("SubjectID")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("SubjectsSubjectID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid>("TeacherID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("UsersUserID")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("SubjectInClassID");
 
                     b.HasIndex("ClassID");
 
+                    b.HasIndex("ClassesClassID");
+
                     b.HasIndex("SubjectID");
 
+                    b.HasIndex("SubjectsSubjectID");
+
                     b.HasIndex("TeacherID");
+
+                    b.HasIndex("UsersUserID");
 
                     b.ToTable("subjectInClasses");
                 });
@@ -402,17 +498,24 @@ namespace Repositories.Migrations
                     b.Property<Guid>("ProgramID")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("ProgramsProgramID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("SubjectCode")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("SubjectName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.HasKey("SubjectID");
 
                     b.HasIndex("ProgramID");
+
+                    b.HasIndex("ProgramsProgramID");
 
                     b.ToTable("subjects");
                 });
@@ -436,36 +539,42 @@ namespace Repositories.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<Guid>("PrerequisiteSyllabusID")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid?>("PrerequisitesSubjectID")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ScoringCondition")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("StudentTasks")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<Guid>("SubjectID")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("SubjectsSubjectID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("SyllabusName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("TYPES")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("SyllabusID");
 
-                    b.HasIndex("PrerequisiteSyllabusID");
+                    b.HasIndex("PrerequisitesSubjectID");
 
                     b.HasIndex("SubjectID");
+
+                    b.HasIndex("SubjectsSubjectID");
 
                     b.ToTable("syllabus");
                 });
@@ -481,11 +590,13 @@ namespace Repositories.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("FullName")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -493,13 +604,18 @@ namespace Repositories.Migrations
                     b.Property<Guid>("MajorID")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<Guid?>("MajorsMajorID")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Phone")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<string>("Role")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -507,6 +623,8 @@ namespace Repositories.Migrations
                     b.HasKey("UserID");
 
                     b.HasIndex("MajorID");
+
+                    b.HasIndex("MajorsMajorID");
 
                     b.ToTable("users");
                 });
@@ -516,14 +634,18 @@ namespace Repositories.Migrations
                     b.HasOne("Repositories.Models.Sessions", "Session")
                         .WithMany()
                         .HasForeignKey("SessionID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Repositories.Models.Users", "Student")
-                        .WithMany("Attendances")
+                        .WithMany()
                         .HasForeignKey("StudentID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("Repositories.Models.Users", null)
+                        .WithMany("Attendances")
+                        .HasForeignKey("UsersUserID");
 
                     b.Navigation("Session");
 
@@ -533,16 +655,24 @@ namespace Repositories.Migrations
             modelBuilder.Entity("Repositories.Models.Curriculums", b =>
                 {
                     b.HasOne("Repositories.Models.Programs", "Program")
-                        .WithMany("Curriculums")
+                        .WithMany()
                         .HasForeignKey("ProgramID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Repositories.Models.Subjects", "Subject")
+                    b.HasOne("Repositories.Models.Programs", null)
                         .WithMany("Curriculums")
+                        .HasForeignKey("ProgramsProgramID");
+
+                    b.HasOne("Repositories.Models.Subjects", "Subject")
+                        .WithMany()
                         .HasForeignKey("SubjectID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("Repositories.Models.Subjects", null)
+                        .WithMany("Curriculums")
+                        .HasForeignKey("SubjectsSubjectID");
 
                     b.Navigation("Program");
 
@@ -552,22 +682,34 @@ namespace Repositories.Migrations
             modelBuilder.Entity("Repositories.Models.Enrollments", b =>
                 {
                     b.HasOne("Repositories.Models.Classes", "Class")
-                        .WithMany("Enrollments")
+                        .WithMany()
                         .HasForeignKey("ClassID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("Repositories.Models.Classes", null)
+                        .WithMany("Enrollments")
+                        .HasForeignKey("ClassesClassID");
 
                     b.HasOne("Repositories.Models.Majors", "Major")
-                        .WithMany("Enrollments")
+                        .WithMany()
                         .HasForeignKey("MajorID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Repositories.Models.Users", "Student")
+                    b.HasOne("Repositories.Models.Majors", null)
                         .WithMany("Enrollments")
+                        .HasForeignKey("MajorsMajorID");
+
+                    b.HasOne("Repositories.Models.Users", "Student")
+                        .WithMany()
                         .HasForeignKey("StudentID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("Repositories.Models.Users", null)
+                        .WithMany("Enrollments")
+                        .HasForeignKey("UsersUserID");
 
                     b.Navigation("Class");
 
@@ -579,10 +721,14 @@ namespace Repositories.Migrations
             modelBuilder.Entity("Repositories.Models.GradeDetails", b =>
                 {
                     b.HasOne("Repositories.Models.Grades", "Grade")
-                        .WithMany("GradeDetails")
+                        .WithMany()
                         .HasForeignKey("GradeID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("Repositories.Models.Grades", null)
+                        .WithMany("GradeDetails")
+                        .HasForeignKey("GradesGradeID");
 
                     b.Navigation("Grade");
                 });
@@ -590,16 +736,24 @@ namespace Repositories.Migrations
             modelBuilder.Entity("Repositories.Models.Grades", b =>
                 {
                     b.HasOne("Repositories.Models.Users", "Student")
-                        .WithMany("Grades")
+                        .WithMany()
                         .HasForeignKey("StudentID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Repositories.Models.Subjects", "Subject")
-                        .WithMany("Grades")
+                        .WithMany()
                         .HasForeignKey("SubjectID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("Repositories.Models.Subjects", null)
+                        .WithMany("Grades")
+                        .HasForeignKey("SubjectsSubjectID");
+
+                    b.HasOne("Repositories.Models.Users", null)
+                        .WithMany("Grades")
+                        .HasForeignKey("UsersUserID");
 
                     b.Navigation("Student");
 
@@ -609,10 +763,14 @@ namespace Repositories.Migrations
             modelBuilder.Entity("Repositories.Models.Notifications", b =>
                 {
                     b.HasOne("Repositories.Models.Users", "Receiver")
-                        .WithMany("Notifications")
-                        .HasForeignKey("receiver")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .WithMany()
+                        .HasForeignKey("ReceiverID")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("Repositories.Models.Users", null)
+                        .WithMany("Notifications")
+                        .HasForeignKey("UsersUserID");
 
                     b.Navigation("Receiver");
                 });
@@ -620,16 +778,24 @@ namespace Repositories.Migrations
             modelBuilder.Entity("Repositories.Models.Predictions", b =>
                 {
                     b.HasOne("Repositories.Models.Users", "Student")
-                        .WithMany("Predictions")
+                        .WithMany()
                         .HasForeignKey("StudentID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Repositories.Models.Subjects", "Subject")
-                        .WithMany("Predictions")
+                        .WithMany()
                         .HasForeignKey("SubjectID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("Repositories.Models.Subjects", null)
+                        .WithMany("Predictions")
+                        .HasForeignKey("SubjectsSubjectID");
+
+                    b.HasOne("Repositories.Models.Users", null)
+                        .WithMany("Predictions")
+                        .HasForeignKey("UsersUserID");
 
                     b.Navigation("Student");
 
@@ -639,10 +805,14 @@ namespace Repositories.Migrations
             modelBuilder.Entity("Repositories.Models.Programs", b =>
                 {
                     b.HasOne("Repositories.Models.Majors", "Major")
-                        .WithMany("Programs")
+                        .WithMany()
                         .HasForeignKey("MajorID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("Repositories.Models.Majors", null)
+                        .WithMany("Programs")
+                        .HasForeignKey("MajorsMajorID");
 
                     b.Navigation("Major");
                 });
@@ -650,10 +820,14 @@ namespace Repositories.Migrations
             modelBuilder.Entity("Repositories.Models.Sessions", b =>
                 {
                     b.HasOne("Repositories.Models.Subjects", "Subject")
-                        .WithMany("Sessions")
+                        .WithMany()
                         .HasForeignKey("SubjectID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("Repositories.Models.Subjects", null)
+                        .WithMany("Sessions")
+                        .HasForeignKey("SubjectsSubjectID");
 
                     b.Navigation("Subject");
                 });
@@ -661,22 +835,34 @@ namespace Repositories.Migrations
             modelBuilder.Entity("Repositories.Models.SubjectInClass", b =>
                 {
                     b.HasOne("Repositories.Models.Classes", "Class")
-                        .WithMany("SubjectInClasses")
+                        .WithMany()
                         .HasForeignKey("ClassID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("Repositories.Models.Classes", null)
+                        .WithMany("SubjectInClasses")
+                        .HasForeignKey("ClassesClassID");
 
                     b.HasOne("Repositories.Models.Subjects", "Subject")
-                        .WithMany("SubjectInClasses")
+                        .WithMany()
                         .HasForeignKey("SubjectID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("Repositories.Models.Subjects", null)
+                        .WithMany("SubjectInClasses")
+                        .HasForeignKey("SubjectsSubjectID");
+
                     b.HasOne("Repositories.Models.Users", "Teacher")
-                        .WithMany("Teachings")
+                        .WithMany()
                         .HasForeignKey("TeacherID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("Repositories.Models.Users", null)
+                        .WithMany("Teachings")
+                        .HasForeignKey("UsersUserID");
 
                     b.Navigation("Class");
 
@@ -688,10 +874,14 @@ namespace Repositories.Migrations
             modelBuilder.Entity("Repositories.Models.Subjects", b =>
                 {
                     b.HasOne("Repositories.Models.Programs", "Program")
-                        .WithMany("Subjects")
+                        .WithMany()
                         .HasForeignKey("ProgramID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("Repositories.Models.Programs", null)
+                        .WithMany("Subjects")
+                        .HasForeignKey("ProgramsProgramID");
 
                     b.Navigation("Program");
                 });
@@ -700,15 +890,18 @@ namespace Repositories.Migrations
                 {
                     b.HasOne("Repositories.Models.Syllabus", "Prerequisite")
                         .WithMany()
-                        .HasForeignKey("PrerequisiteSyllabusID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PrerequisitesSubjectID")
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Repositories.Models.Subjects", "Subject")
-                        .WithMany("Syllabi")
+                        .WithMany()
                         .HasForeignKey("SubjectID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("Repositories.Models.Subjects", null)
+                        .WithMany("Syllabi")
+                        .HasForeignKey("SubjectsSubjectID");
 
                     b.Navigation("Prerequisite");
 
@@ -718,10 +911,14 @@ namespace Repositories.Migrations
             modelBuilder.Entity("Repositories.Models.Users", b =>
                 {
                     b.HasOne("Repositories.Models.Majors", "Major")
-                        .WithMany("Users")
+                        .WithMany()
                         .HasForeignKey("MajorID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.HasOne("Repositories.Models.Majors", null)
+                        .WithMany("Users")
+                        .HasForeignKey("MajorsMajorID");
 
                     b.Navigation("Major");
                 });

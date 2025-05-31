@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SWD_Gr6_PreOJT-RiskAlert")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+81b92bb9f6d29dbdaa4d49d2bc415f7ccae1da63")]
 [assembly: System.Reflection.AssemblyProductAttribute("SWD_Gr6_PreOJT-RiskAlert")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SWD_Gr6_PreOJT-RiskAlert")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert\\Applications\\Applications.csproj",
+      "projectUniqueName": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Applications\\Applications.csproj",
       "projectName": "Applications",
-      "projectPath": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert\\Applications\\Applications.csproj",
+      "projectPath": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Applications\\Applications.csproj",
       "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-      "outputPath": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert\\Applications\\obj\\",
+      "outputPath": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Applications\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
