@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{608EE45E-350C-476F-A8B8-1F9192EEA6FD}|SWD_Gr6_PreOJT-RiskAlert\\SWD_Gr6_PreOJT-RiskAlert.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert\\swd_gr6_preojt-riskalert\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{608EE45E-350C-476F-A8B8-1F9192EEA6FD}|SWD_Gr6_PreOJT-RiskAlert\\SWD_Gr6_PreOJT-RiskAlert.csproj|solutionrelative:swd_gr6_preojt-riskalert\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{608EE45E-350C-476F-A8B8-1F9192EEA6FD}|SWD_Gr6_PreOJT-RiskAlert\\SWD_Gr6_PreOJT-RiskAlert.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert\\swd_gr6_preojt-riskalert\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{608EE45E-350C-476F-A8B8-1F9192EEA6FD}|SWD_Gr6_PreOJT-RiskAlert\\SWD_Gr6_PreOJT-RiskAlert.csproj|solutionrelative:swd_gr6_preojt-riskalert\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert\\repositories\\dbcontext\\riskalertdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|solutionrelative:repositories\\dbcontext\\riskalertdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert\\SWD_Gr6_PreOJT-RiskAlert\\Program.cs",
+              "RelativeDocumentMoniker": "SWD_Gr6_PreOJT-RiskAlert\\Program.cs",
+              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert\\SWD_Gr6_PreOJT-RiskAlert\\Program.cs",
+              "RelativeToolTip": "SWD_Gr6_PreOJT-RiskAlert\\Program.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAAA4AAABiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T02:35:33.925Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RiskAlertDBContext.cs",
+              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\DBContext\\RiskAlertDBContext.cs",
+              "RelativeDocumentMoniker": "Repositories\\DBContext\\RiskAlertDBContext.cs",
+              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\DBContext\\RiskAlertDBContext.cs",
+              "RelativeToolTip": "Repositories\\DBContext\\RiskAlertDBContext.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAkwA4AAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T01:46:12.884Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert\\SWD_Gr6_PreOJT-RiskAlert\\appsettings.json",
+              "RelativeDocumentMoniker": "SWD_Gr6_PreOJT-RiskAlert\\appsettings.json",
+              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert\\SWD_Gr6_PreOJT-RiskAlert\\appsettings.json",
+              "RelativeToolTip": "SWD_Gr6_PreOJT-RiskAlert\\appsettings.json",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAkwAgAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-31T01:39:43.398Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

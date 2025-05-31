@@ -1,0 +1,6 @@
+@SWD_Gr6_PreOJT_RiskAlert_HostAddress = http://localhost:5195
+
+GET {{SWD_Gr6_PreOJT_RiskAlert_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
