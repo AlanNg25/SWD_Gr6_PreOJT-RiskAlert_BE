@@ -1,6 +1,9 @@
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Repositories.DBContext;
+using Repositories.Repositories;
+using Services.Implement;
+using Services.Interface;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,23 +13,33 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<ClassRepository>();
+builder.Services.AddScoped<IClassService, ClassService>();
 
 builder.Services.AddTransient<SqlConnection>(_ =>
                 new SqlConnection(builder.Configuration.GetConnectionString("RiskAlertDBConnection")));
 builder.Services.AddDbContext<RiskAlertDBContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("RiskAlertDBConnection")
-));
-//builder.Services.AddDbContext<RiskAlertDBContext>(options =>
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("RiskAlertDBConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("RiskAlertDBConnection")));
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+app.UseSwagger();
+app.UseSwaggerUI(options =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    options.SwaggerEndpoint("/swagger/v1/swagger.json", "Risk Alert API V1");
+    options.RoutePrefix = string.Empty; // Set Swagger UI at the app's root
+});
+app.UseCors("AllowAll");
 
 app.UseHttpsRedirection();
 

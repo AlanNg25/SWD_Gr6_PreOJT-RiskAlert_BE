@@ -13,11 +13,11 @@ namespace Repositories.Models
         public string Description { get; set; }
         public string StudentTasks { get; set; }
         public string ScoringCondition { get; set; }
-        public string TYPES { get; set; }
+        public string type { get; set; }
         public int CreditHours { get; set; }
         public bool IsDeleted { get; set; }
 
-        public Subjects Subject { get; set; }
-        public Syllabus Prerequisite { get; set; }
+        public virtual Subjects Subject { get; set; }
+        public virtual Subjects Prerequisite { get; set; }
     }
 }

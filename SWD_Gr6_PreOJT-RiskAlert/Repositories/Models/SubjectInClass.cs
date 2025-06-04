@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Security.Claims;
 
 namespace Repositories.Models
@@ -10,9 +11,13 @@ namespace Repositories.Models
         public Guid ClassID { get; set; }
         public Guid TeacherID { get; set; }
         public Guid SubjectID { get; set; }
+        public bool IsDeleted { get; set; }
 
-        public Classes Class { get; set; }
-        public Users Teacher { get; set; }
-        public Subjects Subject { get; set; }
+        [ForeignKey("ClassID")]
+        public virtual Classes Class { get; set; }
+        [ForeignKey("TeacherID")]
+        public virtual Users Teacher { get; set; }
+        [ForeignKey("SubjectID")]
+        public virtual Subjects Subject { get; set; }
     }
 }

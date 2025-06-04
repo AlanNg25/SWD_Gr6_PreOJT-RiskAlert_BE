@@ -320,6 +320,8 @@ D:\study\SU25\SWD392\SWD_Gr6_PreOJT-RiskAlert_BE\SWD_Gr6_PreOJT-RiskAlert\SWD_Gr
 D:\study\SU25\SWD392\SWD_Gr6_PreOJT-RiskAlert_BE\SWD_Gr6_PreOJT-RiskAlert\SWD_Gr6_PreOJT-RiskAlert\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
 D:\study\SU25\SWD392\SWD_Gr6_PreOJT-RiskAlert_BE\SWD_Gr6_PreOJT-RiskAlert\SWD_Gr6_PreOJT-RiskAlert\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 D:\study\SU25\SWD392\SWD_Gr6_PreOJT-RiskAlert_BE\SWD_Gr6_PreOJT-RiskAlert\SWD_Gr6_PreOJT-RiskAlert\bin\Debug\net8.0\Repositories.dll
+D:\study\SU25\SWD392\SWD_Gr6_PreOJT-RiskAlert_BE\SWD_Gr6_PreOJT-RiskAlert\SWD_Gr6_PreOJT-RiskAlert\bin\Debug\net8.0\Services.dll
+D:\study\SU25\SWD392\SWD_Gr6_PreOJT-RiskAlert_BE\SWD_Gr6_PreOJT-RiskAlert\SWD_Gr6_PreOJT-RiskAlert\bin\Debug\net8.0\Services.pdb
 D:\study\SU25\SWD392\SWD_Gr6_PreOJT-RiskAlert_BE\SWD_Gr6_PreOJT-RiskAlert\SWD_Gr6_PreOJT-RiskAlert\bin\Debug\net8.0\Repositories.pdb
 D:\study\SU25\SWD392\SWD_Gr6_PreOJT-RiskAlert_BE\SWD_Gr6_PreOJT-RiskAlert\SWD_Gr6_PreOJT-RiskAlert\obj\Debug\net8.0\SWD_Gr6_PreOJT-RiskAlert.csproj.AssemblyReference.cache
 D:\study\SU25\SWD392\SWD_Gr6_PreOJT-RiskAlert_BE\SWD_Gr6_PreOJT-RiskAlert\SWD_Gr6_PreOJT-RiskAlert\obj\Debug\net8.0\SWD_Gr6_PreOJT-RiskAlert.GeneratedMSBuildEditorConfig.editorconfig
@@ -339,10 +341,10 @@ D:\study\SU25\SWD392\SWD_Gr6_PreOJT-RiskAlert_BE\SWD_Gr6_PreOJT-RiskAlert\SWD_Gr
 D:\study\SU25\SWD392\SWD_Gr6_PreOJT-RiskAlert_BE\SWD_Gr6_PreOJT-RiskAlert\SWD_Gr6_PreOJT-RiskAlert\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.SWD_Gr6_PreOJT-RiskAlert.props
 D:\study\SU25\SWD392\SWD_Gr6_PreOJT-RiskAlert_BE\SWD_Gr6_PreOJT-RiskAlert\SWD_Gr6_PreOJT-RiskAlert\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.SWD_Gr6_PreOJT-RiskAlert.props
 D:\study\SU25\SWD392\SWD_Gr6_PreOJT-RiskAlert_BE\SWD_Gr6_PreOJT-RiskAlert\SWD_Gr6_PreOJT-RiskAlert\obj\Debug\net8.0\staticwebassets.pack.json
+D:\study\SU25\SWD392\SWD_Gr6_PreOJT-RiskAlert_BE\SWD_Gr6_PreOJT-RiskAlert\SWD_Gr6_PreOJT-RiskAlert\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\study\SU25\SWD392\SWD_Gr6_PreOJT-RiskAlert_BE\SWD_Gr6_PreOJT-RiskAlert\SWD_Gr6_PreOJT-RiskAlert\obj\Debug\net8.0\SWD_Gr6_.1E703F20.Up2Date
 D:\study\SU25\SWD392\SWD_Gr6_PreOJT-RiskAlert_BE\SWD_Gr6_PreOJT-RiskAlert\SWD_Gr6_PreOJT-RiskAlert\obj\Debug\net8.0\SWD_Gr6_PreOJT-RiskAlert.dll
 D:\study\SU25\SWD392\SWD_Gr6_PreOJT-RiskAlert_BE\SWD_Gr6_PreOJT-RiskAlert\SWD_Gr6_PreOJT-RiskAlert\obj\Debug\net8.0\refint\SWD_Gr6_PreOJT-RiskAlert.dll
 D:\study\SU25\SWD392\SWD_Gr6_PreOJT-RiskAlert_BE\SWD_Gr6_PreOJT-RiskAlert\SWD_Gr6_PreOJT-RiskAlert\obj\Debug\net8.0\SWD_Gr6_PreOJT-RiskAlert.pdb
 D:\study\SU25\SWD392\SWD_Gr6_PreOJT-RiskAlert_BE\SWD_Gr6_PreOJT-RiskAlert\SWD_Gr6_PreOJT-RiskAlert\obj\Debug\net8.0\SWD_Gr6_PreOJT-RiskAlert.genruntimeconfig.cache
 D:\study\SU25\SWD392\SWD_Gr6_PreOJT-RiskAlert_BE\SWD_Gr6_PreOJT-RiskAlert\SWD_Gr6_PreOJT-RiskAlert\obj\Debug\net8.0\ref\SWD_Gr6_PreOJT-RiskAlert.dll
-D:\study\SU25\SWD392\SWD_Gr6_PreOJT-RiskAlert_BE\SWD_Gr6_PreOJT-RiskAlert\SWD_Gr6_PreOJT-RiskAlert\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

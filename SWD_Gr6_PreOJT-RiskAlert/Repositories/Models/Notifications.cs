@@ -14,6 +14,7 @@ namespace Repositories.Models
         public DateTime SentTime { get; set; }
         public bool IsDeleted { get; set; }
 
-        public Users Receiver { get; set; }
+        [ForeignKey("ReceiverID")]
+        public virtual Users Receiver { get; set; }
     }
 }

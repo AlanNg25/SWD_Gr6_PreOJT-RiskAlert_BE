@@ -3,24 +3,100 @@
   "WorkspaceRootPath": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert_be\\swd_gr6_preojt-riskalert\\repositories\\dbcontext\\riskalertdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|solutionrelative:repositories\\dbcontext\\riskalertdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert_be\\swd_gr6_preojt-riskalert\\repositories\\repositories\\classrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|solutionrelative:repositories\\repositories\\classrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert_be\\swd_gr6_preojt-riskalert\\repositories\\models\\notifications.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|solutionrelative:repositories\\models\\notifications.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8FE796ED-9414-4E23-AE5E-4D28F3D28041}|Services\\Services.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert_be\\swd_gr6_preojt-riskalert\\services\\implement\\classservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FE796ED-9414-4E23-AE5E-4D28F3D28041}|Services\\Services.csproj|solutionrelative:services\\implement\\classservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert_be\\swd_gr6_preojt-riskalert\\repositories\\models\\enrollments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|solutionrelative:repositories\\models\\enrollments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{608EE45E-350C-476F-A8B8-1F9192EEA6FD}|SWD_Gr6_PreOJT-RiskAlert\\SWD_Gr6_PreOJT-RiskAlert.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert_be\\swd_gr6_preojt-riskalert\\swd_gr6_preojt-riskalert\\controllers\\classcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{608EE45E-350C-476F-A8B8-1F9192EEA6FD}|SWD_Gr6_PreOJT-RiskAlert\\SWD_Gr6_PreOJT-RiskAlert.csproj|solutionrelative:swd_gr6_preojt-riskalert\\controllers\\classcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8FE796ED-9414-4E23-AE5E-4D28F3D28041}|Services\\Services.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert_be\\swd_gr6_preojt-riskalert\\services\\interface\\iclassservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8FE796ED-9414-4E23-AE5E-4D28F3D28041}|Services\\Services.csproj|solutionrelative:services\\interface\\iclassservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{608EE45E-350C-476F-A8B8-1F9192EEA6FD}|SWD_Gr6_PreOJT-RiskAlert\\SWD_Gr6_PreOJT-RiskAlert.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert_be\\swd_gr6_preojt-riskalert\\swd_gr6_preojt-riskalert\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{608EE45E-350C-476F-A8B8-1F9192EEA6FD}|SWD_Gr6_PreOJT-RiskAlert\\SWD_Gr6_PreOJT-RiskAlert.csproj|solutionrelative:swd_gr6_preojt-riskalert\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{608EE45E-350C-476F-A8B8-1F9192EEA6FD}|SWD_Gr6_PreOJT-RiskAlert\\SWD_Gr6_PreOJT-RiskAlert.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert_be\\swd_gr6_preojt-riskalert\\swd_gr6_preojt-riskalert\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{608EE45E-350C-476F-A8B8-1F9192EEA6FD}|SWD_Gr6_PreOJT-RiskAlert\\SWD_Gr6_PreOJT-RiskAlert.csproj|solutionrelative:swd_gr6_preojt-riskalert\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{608EE45E-350C-476F-A8B8-1F9192EEA6FD}|SWD_Gr6_PreOJT-RiskAlert\\SWD_Gr6_PreOJT-RiskAlert.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert_be\\swd_gr6_preojt-riskalert\\swd_gr6_preojt-riskalert\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{608EE45E-350C-476F-A8B8-1F9192EEA6FD}|SWD_Gr6_PreOJT-RiskAlert\\SWD_Gr6_PreOJT-RiskAlert.csproj|solutionrelative:swd_gr6_preojt-riskalert\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert_be\\swd_gr6_preojt-riskalert\\repositories\\dbcontext\\riskalertdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|solutionrelative:repositories\\dbcontext\\riskalertdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert_be\\swd_gr6_preojt-riskalert\\repositories\\models\\classes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|solutionrelative:repositories\\models\\classes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert_be\\swd_gr6_preojt-riskalert\\repositories\\models\\actions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|solutionrelative:repositories\\models\\actions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert_be\\swd_gr6_preojt-riskalert\\repositories\\basic\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|solutionrelative:repositories\\basic\\genericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert_be\\swd_gr6_preojt-riskalert\\repositories\\models\\curriculums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|solutionrelative:repositories\\models\\curriculums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert_be\\swd_gr6_preojt-riskalert\\repositories\\models\\enrollments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|solutionrelative:repositories\\models\\enrollments.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert_be\\swd_gr6_preojt-riskalert\\repositories\\models\\gradedetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|solutionrelative:repositories\\models\\gradedetails.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert_be\\swd_gr6_preojt-riskalert\\repositories\\models\\subjectinclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|solutionrelative:repositories\\models\\subjectinclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert_be\\swd_gr6_preojt-riskalert\\repositories\\models\\subjects.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|solutionrelative:repositories\\models\\subjects.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert_be\\swd_gr6_preojt-riskalert\\repositories\\models\\programs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|solutionrelative:repositories\\models\\programs.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert_be\\swd_gr6_preojt-riskalert\\repositories\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|solutionrelative:repositories\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert_be\\swd_gr6_preojt-riskalert\\repositories\\models\\riskanalysis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|solutionrelative:repositories\\models\\riskanalysis.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert_be\\swd_gr6_preojt-riskalert\\repositories\\models\\grades.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|solutionrelative:repositories\\models\\grades.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert_be\\swd_gr6_preojt-riskalert\\repositories\\models\\majors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|solutionrelative:repositories\\models\\majors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert_be\\swd_gr6_preojt-riskalert\\repositories\\models\\predictions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|solutionrelative:repositories\\models\\predictions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert_be\\swd_gr6_preojt-riskalert\\repositories\\models\\syllabus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|solutionrelative:repositories\\models\\syllabus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert_be\\swd_gr6_preojt-riskalert\\repositories\\models\\notifications.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|solutionrelative:repositories\\models\\notifications.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|d:\\study\\su25\\swd392\\swd_gr6_preojt-riskalert_be\\swd_gr6_preojt-riskalert\\repositories\\models\\attendances.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D22010C1-EF1F-4D26-B2A9-F956CA4DE728}|Repositories\\Repositories.csproj|solutionrelative:repositories\\models\\attendances.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,32 +106,20 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Notifications.cs",
-              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Notifications.cs",
-              "RelativeDocumentMoniker": "Repositories\\Models\\Notifications.cs",
-              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Notifications.cs",
-              "RelativeToolTip": "Repositories\\Models\\Notifications.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwAkAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-31T08:16:28.05Z",
+              "DocumentIndex": 5,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\SWD_Gr6_PreOJT-RiskAlert\\appsettings.json",
+              "RelativeDocumentMoniker": "SWD_Gr6_PreOJT-RiskAlert\\appsettings.json",
+              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\SWD_Gr6_PreOJT-RiskAlert\\appsettings.json",
+              "RelativeToolTip": "SWD_Gr6_PreOJT-RiskAlert\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-04T16:42:41.957Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Enrollments.cs",
-              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Enrollments.cs",
-              "RelativeDocumentMoniker": "Repositories\\Models\\Enrollments.cs",
-              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Enrollments.cs",
-              "RelativeToolTip": "Repositories\\Models\\Enrollments.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAiwAsAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-31T02:55:56.595Z"
             },
             {
               "$type": "Document",
@@ -65,34 +129,279 @@
               "RelativeDocumentMoniker": "SWD_Gr6_PreOJT-RiskAlert\\Program.cs",
               "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\SWD_Gr6_PreOJT-RiskAlert\\Program.cs",
               "RelativeToolTip": "SWD_Gr6_PreOJT-RiskAlert\\Program.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAAAA4AAABiAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAADwvw8AAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-31T02:35:33.925Z"
+              "WhenOpened": "2025-06-04T16:14:07.767Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RiskAlertDBContext.cs",
-              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\DBContext\\RiskAlertDBContext.cs",
-              "RelativeDocumentMoniker": "Repositories\\DBContext\\RiskAlertDBContext.cs",
-              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\DBContext\\RiskAlertDBContext.cs",
-              "RelativeToolTip": "Repositories\\DBContext\\RiskAlertDBContext.cs",
-              "ViewState": "AgIAANAAAAAAAAAAAADwv9sAAAAhAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "ClassController.cs",
+              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\SWD_Gr6_PreOJT-RiskAlert\\Controllers\\ClassController.cs",
+              "RelativeDocumentMoniker": "SWD_Gr6_PreOJT-RiskAlert\\Controllers\\ClassController.cs",
+              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\SWD_Gr6_PreOJT-RiskAlert\\Controllers\\ClassController.cs",
+              "RelativeToolTip": "SWD_Gr6_PreOJT-RiskAlert\\Controllers\\ClassController.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAswEsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-31T01:46:12.884Z",
+              "WhenOpened": "2025-06-04T16:10:41.842Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\SWD_Gr6_PreOJT-RiskAlert\\appsettings.json",
-              "RelativeDocumentMoniker": "SWD_Gr6_PreOJT-RiskAlert\\appsettings.json",
-              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\SWD_Gr6_PreOJT-RiskAlert\\appsettings.json",
-              "RelativeToolTip": "SWD_Gr6_PreOJT-RiskAlert\\appsettings.json",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAkwAgAAACgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-31T01:39:43.398Z"
+              "Title": "IClassService.cs",
+              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Services\\Interface\\IClassService.cs",
+              "RelativeDocumentMoniker": "Services\\Interface\\IClassService.cs",
+              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Services\\Interface\\IClassService.cs",
+              "RelativeToolTip": "Services\\Interface\\IClassService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T16:08:02.173Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ClassService.cs",
+              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Services\\Implement\\ClassService.cs",
+              "RelativeDocumentMoniker": "Services\\Implement\\ClassService.cs",
+              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Services\\Implement\\ClassService.cs",
+              "RelativeToolTip": "Services\\Implement\\ClassService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAswBAAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T16:02:52.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ClassRepository.cs",
+              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Repositories\\ClassRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\Repositories\\ClassRepository.cs",
+              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Repositories\\ClassRepository.cs",
+              "RelativeToolTip": "Repositories\\Repositories\\ClassRepository.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAiwBIAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T15:55:09.414Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Classes.cs",
+              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Classes.cs",
+              "RelativeDocumentMoniker": "Repositories\\Models\\Classes.cs",
+              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Classes.cs",
+              "RelativeToolTip": "Repositories\\Models\\Classes.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T14:52:15.384Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "GenericRepository.cs",
+              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Basic\\GenericRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\Basic\\GenericRepository.cs",
+              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Basic\\GenericRepository.cs",
+              "RelativeToolTip": "Repositories\\Basic\\GenericRepository.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAIgAAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T15:53:00.788Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Subjects.cs",
+              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Subjects.cs",
+              "RelativeDocumentMoniker": "Repositories\\Models\\Subjects.cs",
+              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Subjects.cs",
+              "RelativeToolTip": "Repositories\\Models\\Subjects.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAuwBEAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T14:56:13.682Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "SubjectInClass.cs",
+              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\SubjectInClass.cs",
+              "RelativeDocumentMoniker": "Repositories\\Models\\SubjectInClass.cs",
+              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\SubjectInClass.cs",
+              "RelativeToolTip": "Repositories\\Models\\SubjectInClass.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAcwBQAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T14:55:41.954Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Notifications.cs",
+              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Notifications.cs",
+              "RelativeDocumentMoniker": "Repositories\\Models\\Notifications.cs",
+              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Notifications.cs",
+              "RelativeToolTip": "Repositories\\Models\\Notifications.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAmwBMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T14:54:55.265Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "Majors.cs",
+              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Majors.cs",
+              "RelativeDocumentMoniker": "Repositories\\Models\\Majors.cs",
+              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Majors.cs",
+              "RelativeToolTip": "Repositories\\Models\\Majors.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAmwAoAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T14:54:48.229Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Grades.cs",
+              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Grades.cs",
+              "RelativeDocumentMoniker": "Repositories\\Models\\Grades.cs",
+              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Grades.cs",
+              "RelativeToolTip": "Repositories\\Models\\Grades.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAqwBIAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T14:54:25.461Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Predictions.cs",
+              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Predictions.cs",
+              "RelativeDocumentMoniker": "Repositories\\Models\\Predictions.cs",
+              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Predictions.cs",
+              "RelativeToolTip": "Repositories\\Models\\Predictions.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAiwAUAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T06:19:28.294Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Actions.cs",
+              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Actions.cs",
+              "RelativeDocumentMoniker": "Repositories\\Models\\Actions.cs",
+              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Actions.cs",
+              "RelativeToolTip": "Repositories\\Models\\Actions.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAiwBMAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T06:26:38.816Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Syllabus.cs",
+              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Syllabus.cs",
+              "RelativeDocumentMoniker": "Repositories\\Models\\Syllabus.cs",
+              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Syllabus.cs",
+              "RelativeToolTip": "Repositories\\Models\\Syllabus.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAwwAoAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T06:27:12.363Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Users.cs",
+              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Users.cs",
+              "RelativeDocumentMoniker": "Repositories\\Models\\Users.cs",
+              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Users.cs",
+              "RelativeToolTip": "Repositories\\Models\\Users.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAA2wBQAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T06:13:28.203Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "GradeDetails.cs",
+              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\GradeDetails.cs",
+              "RelativeDocumentMoniker": "Repositories\\Models\\GradeDetails.cs",
+              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\GradeDetails.cs",
+              "RelativeToolTip": "Repositories\\Models\\GradeDetails.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAmwA4AAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T14:54:13.473Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Attendances.cs",
+              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Attendances.cs",
+              "RelativeDocumentMoniker": "Repositories\\Models\\Attendances.cs",
+              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Attendances.cs",
+              "RelativeToolTip": "Repositories\\Models\\Attendances.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAA8wBYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T14:52:09.644Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Programs.cs",
+              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Programs.cs",
+              "RelativeDocumentMoniker": "Repositories\\Models\\Programs.cs",
+              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Programs.cs",
+              "RelativeToolTip": "Repositories\\Models\\Programs.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwA8AAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T06:20:24.32Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "RiskAnalysis.cs",
+              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\RiskAnalysis.cs",
+              "RelativeDocumentMoniker": "Repositories\\Models\\RiskAnalysis.cs",
+              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\RiskAnalysis.cs",
+              "RelativeToolTip": "Repositories\\Models\\RiskAnalysis.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAqwBYAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T14:10:51.505Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Curriculums.cs",
+              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Curriculums.cs",
+              "RelativeDocumentMoniker": "Repositories\\Models\\Curriculums.cs",
+              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Curriculums.cs",
+              "RelativeToolTip": "Repositories\\Models\\Curriculums.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAA8wBQAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T14:52:45.662Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Enrollments.cs",
+              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Enrollments.cs",
+              "RelativeDocumentMoniker": "Repositories\\Models\\Enrollments.cs",
+              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\Models\\Enrollments.cs",
+              "RelativeToolTip": "Repositories\\Models\\Enrollments.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAwwBYAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-04T06:17:36.46Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "RiskAlertDBContext.cs",
+              "DocumentMoniker": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\DBContext\\RiskAlertDBContext.cs",
+              "RelativeDocumentMoniker": "Repositories\\DBContext\\RiskAlertDBContext.cs",
+              "ToolTip": "D:\\study\\SU25\\SWD392\\SWD_Gr6_PreOJT-RiskAlert_BE\\SWD_Gr6_PreOJT-RiskAlert\\Repositories\\DBContext\\RiskAlertDBContext.cs",
+              "RelativeToolTip": "Repositories\\DBContext\\RiskAlertDBContext.cs",
+              "ViewState": "AgIAAJUAAAAAAAAAAADwv6sAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-31T01:46:12.884Z",
+              "EditorCaption": ""
             }
           ]
         }

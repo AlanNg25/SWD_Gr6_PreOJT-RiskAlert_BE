@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Repositories.Models
 {
@@ -12,7 +13,9 @@ namespace Repositories.Models
         public int Year { get; set; }
         public bool IsDeleted { get; set; }
 
-        public Programs Program { get; set; }
-        public Subjects Subject { get; set; }
+        [ForeignKey("ProgramID")]
+        public virtual Programs Program { get; set; }
+        [ForeignKey("SubjectID")]
+        public virtual Subjects Subject { get; set; }
     }
 }

@@ -15,13 +15,6 @@ namespace Repositories.Models
         public bool IsDeleted { get; set; }
 
         [ForeignKey("ProgramID")]
-        public Programs Program { get; set; }
-
-        public ICollection<Curriculums> Curriculums { get; set; }
-        public ICollection<Syllabus> Syllabi { get; set; }
-        public ICollection<SubjectInClass> SubjectInClasses { get; set; }
-        public ICollection<Sessions> Sessions { get; set; }
-        public ICollection<Grades> Grades { get; set; }
-        public ICollection<Predictions> Predictions { get; set; }
+        public virtual Programs Program { get; set; }
     }
 }

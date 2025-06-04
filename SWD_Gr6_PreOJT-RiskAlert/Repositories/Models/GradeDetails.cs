@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics;
 
 namespace Repositories.Models
@@ -14,6 +15,7 @@ namespace Repositories.Models
         public decimal MinScr { get; set; }
         public bool IsDeleted { get; set; }
 
-        public Grades Grade { get; set; }
+        [ForeignKey("GradeID")]
+        public virtual Grades Grade { get; set; }
     }
 }

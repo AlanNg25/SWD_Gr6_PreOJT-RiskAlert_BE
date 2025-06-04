@@ -18,13 +18,6 @@ namespace Repositories.Models
         public bool IsDeleted { get; set; }
 
         [ForeignKey("MajorID")]
-        public Majors Major { get; set; }
-
-        public ICollection<Enrollments> Enrollments { get; set; }
-        public ICollection<SubjectInClass> Teachings { get; set; }
-        public ICollection<Attendances> Attendances { get; set; }
-        public ICollection<Grades> Grades { get; set; }
-        public ICollection<Notifications> Notifications { get; set; }
-        public ICollection<Predictions> Predictions { get; set; }
+        public virtual Majors Major { get; set; }
     }
 }

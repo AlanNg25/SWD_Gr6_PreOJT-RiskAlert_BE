@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Repositories.Models
 {
@@ -12,9 +13,9 @@ namespace Repositories.Models
         public decimal Score { get; set; }
         public bool IsDeleted { get; set; }
 
-        public Users Student { get; set; }
-        public Subjects Subject { get; set; }
-
-        public ICollection<GradeDetails> GradeDetails { get; set; }
+        [ForeignKey("StudentID")]
+        public virtual Users Student { get; set; }
+        [ForeignKey("SubjectID")]
+        public virtual Subjects Subject { get; set; }
     }
 }
