@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\SWD_Gr6_PreOJT-RiskAlert.props" />
-</Project>
