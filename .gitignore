@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.vs
+/SWD_Gr6_PreOJT-RiskAlert/bin
+/SWD_Gr6_PreOJT-RiskAlert/obj
