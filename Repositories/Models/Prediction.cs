@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Repositories.Models
 {
-    public class Predictions
+    public class Prediction
     {
         [Key]
         public Guid PredictionID { get; set; }
@@ -13,7 +13,6 @@ namespace Repositories.Models
         public string Details { get; set; }
         public bool IsDeleted { get; set; }
 
-        [ForeignKey("StudentID")]
-        public virtual Users Student { get; set; }
+        public virtual User Student { get; set; }
     }
 }

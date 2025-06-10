@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace Repositories.Models
 {
-    public class Subjects
+    public class Subject
     {
         [Key]
         public Guid SubjectID { get; set; }
@@ -14,7 +14,8 @@ namespace Repositories.Models
         public string Description { get; set; }
         public bool IsDeleted { get; set; }
 
-        [ForeignKey("ProgramID")]
-        public virtual Programs Program { get; set; }
+        public virtual ICollection<Course> Courses { get; set; } = new List<Course>();
+        public virtual ICollection<Syllabus> Syllabuses { get; set; } = new List<Syllabus>();
+        public virtual ICollection<Curriculum> Curriculums { get; set; } = new List<Curriculum>();
     }
 }

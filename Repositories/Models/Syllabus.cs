@@ -17,7 +17,7 @@ namespace Repositories.Models
         public int CreditHours { get; set; }
         public bool IsDeleted { get; set; }
 
-        public virtual Subjects Subject { get; set; }
-        public virtual Subjects Prerequisite { get; set; }
+        public virtual Subject Subject { get; set; }
+        public virtual Subject Prerequisite { get; set; }
     }
 }

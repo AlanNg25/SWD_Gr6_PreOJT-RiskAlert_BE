@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace Repositories.Models
 {
-    public class GradeDetails
+    public class GradeDetail
     {
         [Key]
         public Guid GradeDetailID { get; set; }
@@ -15,7 +15,6 @@ namespace Repositories.Models
         public decimal MinScr { get; set; }
         public bool IsDeleted { get; set; }
 
-        [ForeignKey("GradeID")]
-        public virtual Grades Grade { get; set; }
+        public virtual Grade Grade { get; set; }
     }
 }

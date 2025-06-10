@@ -19,7 +19,7 @@ namespace Repositories.Models
         public bool IsResolved { get; set; }
         public bool IsDeleted { get; set; }
 
-        [ForeignKey("EnrollmentID")]
-        public virtual Enrollments Enrollment { get; set; }
+        public virtual Enrollment Enrollment { get; set; }
+        public virtual ICollection<Suggestion> Suggestions { get; set; } = new List<Suggestion>();
     }
 }

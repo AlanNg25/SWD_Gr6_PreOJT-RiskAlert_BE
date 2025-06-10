@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Repositories.Models
 {
-    public class Notifications
+    public class Notification
     {
         [Key]
         public Guid NotificationID { get; set; }
@@ -14,7 +14,6 @@ namespace Repositories.Models
         public DateTime SentTime { get; set; }
         public bool IsDeleted { get; set; }
 
-        [ForeignKey("ReceiverID")]
-        public virtual Users Receiver { get; set; }
+        public virtual User Receiver { get; set; }
     }
 }

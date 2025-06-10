@@ -14,157 +14,138 @@ namespace Repositories.DBContext
     {
         public RiskAlertDBContext() { }
         public RiskAlertDBContext(DbContextOptions<RiskAlertDBContext> options) : base(options) { }
-        public DbSet<Users> users { get; set; }
-        public DbSet<Majors> majors { get; set; }
-        public DbSet<Enrollments> enrollments { get; set; }
-        public DbSet<Classes> classes { get; set; }
-        public DbSet<Subjects> subjects { get; set; }
-        public DbSet<SubjectInClass> subjectInClasses { get; set; }
-        public DbSet<Attendances> attendances { get; set; }
-        public DbSet<Grades> grades { get; set; }
-        public DbSet<GradeDetails> gradeDetails { get; set; }
-        public DbSet<Programs> programs { get; set; }
-        public DbSet<Curriculums> curriculums { get; set; }
+        public DbSet<User> user { get; set; }
+        public DbSet<Major> major { get; set; }
+        public DbSet<Enrollment> enrollment { get; set; }
+        public DbSet<Subject> subject { get; set; }
+        public DbSet<Attendance> attendance { get; set; }
+        public DbSet<Grade> grade { get; set; }
+        public DbSet<GradeDetail> gradeDetail { get; set; }
+        public DbSet<Curriculum> curriculum { get; set; }
         public DbSet<Syllabus> syllabus { get; set; }
-        public DbSet<Notifications> notifications { get; set; }
-        public DbSet<Predictions> predictions { get; set; }
+        public DbSet<Notification> notification { get; set; }
+        public DbSet<Prediction> prediction { get; set; }
         public DbSet<RiskAnalysis> riskAnalysis { get; set; }
-        public DbSet<Actions> actions { get; set; }
+        public DbSet<Suggestion> suggestion { get; set; }
+        public DbSet<Course> course { get; set; }
+        public DbSet<Semester> semester { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Enrollments>()
+            modelBuilder.Entity<Enrollment>()
                 .HasOne(e => e.Student)
-                .WithMany()
+                .WithMany(s => s.Enrollments)
                 .HasForeignKey(e => e.StudentID)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<Grades>()
-                .HasOne(g => g.Student)
-                .WithMany()
-                .HasForeignKey(g => g.StudentID)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<Notifications>()
-                .HasOne(n => n.Receiver)
-                .WithMany()
-                .HasForeignKey(n => n.ReceiverID)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<SubjectInClass>()
-                .HasOne(sic => sic.Teacher)
-                .WithMany()
-                .HasForeignKey(sic => sic.TeacherID)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<Actions>()
-                .HasOne(a => a.Advisor)
-                .WithMany()
-                .HasForeignKey(a => a.AdvisorID)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<Users>()
-                .HasOne(u => u.Major)
-                .WithMany()
-                .HasForeignKey(u => u.MajorID)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<Enrollments>()
+            modelBuilder.Entity<Enrollment>()
                 .HasOne(e => e.Major)
-                .WithMany()
+                .WithMany(m => m.Enrollments)
                 .HasForeignKey(e => e.MajorID)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<Programs>()
-                .HasOne(p => p.Major)
-                .WithMany()
-                .HasForeignKey(p => p.MajorID)
+            modelBuilder.Entity<Enrollment>()
+                .HasOne(e => e.Course)
+                .WithMany(c => c.Enrollments)
+                .HasForeignKey(e => e.CourseID)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<Subjects>()
-                .HasOne(s => s.Program)
-                .WithMany()
-                .HasForeignKey(s => s.ProgramID)
+            modelBuilder.Entity<Grade>()
+                .HasOne(g => g.Student)
+                .WithMany(s => s.Grades)
+                .HasForeignKey(g => g.StudentID)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<Curriculums>()
-                .HasOne(c => c.Program)
-                .WithMany()
-                .HasForeignKey(c => c.ProgramID)
+            modelBuilder.Entity<Grade>()
+                .HasOne(g => g.Course)
+                .WithMany(c => c.Grades)
+                .HasForeignKey(g => g.CourseID)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<Curriculums>()
+            modelBuilder.Entity<Notification>()
+                .HasOne(n => n.Receiver)
+                .WithMany(r => r.Notifications)
+                .HasForeignKey(n => n.ReceiverID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Suggestion>()
+                .HasOne(a => a.Advisor)
+                .WithMany(a => a.Suggestions)
+                .HasForeignKey(a => a.AdvisorID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Suggestion>()
+                .HasOne(a => a.Risk)
+                .WithMany(r => r.Suggestions)
+                .HasForeignKey(a => a.RiskID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.Majors)
+                .WithMany(m => m.Users)
+                .HasForeignKey(u => u.MajorID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Curriculum>()
+                .HasOne(c => c.Major)
+                .WithMany(m => m.Curriculums)
+                .HasForeignKey(c => c.MajorID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Curriculum>()
                 .HasOne(c => c.Subject)
-                .WithMany()
+                .WithMany(s => s.Curriculums)
                 .HasForeignKey(c => c.SubjectID)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<SubjectInClass>()
-                .HasOne(sic => sic.Subject)
-                .WithMany()
-                .HasForeignKey(sic => sic.SubjectID)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<Grades>()
-                .HasOne(g => g.Subject)
-                .WithMany()
-                .HasForeignKey(g => g.SubjectID)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<Predictions>()
+            modelBuilder.Entity<Prediction>()
                 .HasOne(p => p.Student)
-                .WithMany()
+                .WithMany(s => s.Predictions)
                 .HasForeignKey(p => p.StudentID)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Syllabus>()
                 .HasOne(s => s.Subject)
-                .WithMany()
+                .WithMany(s => s.Syllabuses)
                 .HasForeignKey(s => s.SubjectID)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Syllabus>()
                 .HasOne(s => s.Subject)
-                .WithMany()
+                .WithMany(s => s.Syllabuses)
                 .HasForeignKey(s => s.PrerequisitesSubjectID)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<Enrollments>()
-                .HasOne(e => e.Class)
-                .WithMany()
-                .HasForeignKey(e => e.ClassID)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<SubjectInClass>()
-                .HasOne(sic => sic.Class)
-                .WithMany()
-                .HasForeignKey(sic => sic.ClassID)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<Attendances>()
+            modelBuilder.Entity<Attendance>()
                 .HasOne(a => a.Enrollment)
-                .WithMany()
+                .WithMany(e => e.Attendances)
                 .HasForeignKey(a => a.EnrollmentID)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            modelBuilder.Entity<Attendances>()
-                .HasOne(a => a.ClassSubject)
-                .WithMany()
-                .HasForeignKey(a => a.ClassSubjectID)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<Actions>()
-                .HasOne(a => a.Risk)
-                .WithMany()
-                .HasForeignKey(a => a.RiskID)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            modelBuilder.Entity<GradeDetails>()
+            modelBuilder.Entity<GradeDetail>()
                 .HasOne(gd => gd.Grade)
-                .WithMany()
+                .WithMany(g => g.GradeDetails)
                 .HasForeignKey(gd => gd.GradeID)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Course>()
+                .HasOne(c => c.Subject)
+                .WithMany(s => s.Courses)
+                .HasForeignKey(c => c.SubjectID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Course>()
+                .HasOne(c => c.Semester)
+                .WithMany(s => s.Courses)
+                .HasForeignKey(c => c.SemesterID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Course>()
+                .HasOne(c => c.Teacher)
+                .WithMany(t => t.Courses)
+                .HasForeignKey(c => c.TeacherID)
+                .OnDelete(DeleteBehavior.Restrict);
         }
 
     }

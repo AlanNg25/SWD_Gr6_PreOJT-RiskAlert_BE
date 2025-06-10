@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Repositories.Models
 {
-    public class Actions
+    public class Suggestion
     {
         [Key]
-        public Guid ActionID { get; set; }
+        public Guid SuggestionID { get; set; }
         public Guid RiskID { get; set; }
         public Guid AdvisorID { get; set; }
         public DateTime? SentDate { get; set; }
@@ -20,9 +20,7 @@ namespace Repositories.Models
         public string? Notes { get; set; }
         public bool IsDeleted { get; set; }
 
-        [ForeignKey("RiskID")]
         public virtual RiskAnalysis Risk { get; set; }
-        [ForeignKey("AdvisorID")]
-        public virtual Users Advisor { get; set; }
+        public virtual User Advisor { get; set; }
     }
 }

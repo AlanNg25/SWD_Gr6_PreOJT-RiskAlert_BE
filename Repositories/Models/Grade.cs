@@ -3,19 +3,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Repositories.Models
 {
-    public class Grades
+    public class Grade
     {
         [Key]
         public Guid GradeID { get; set; }
         public Guid StudentID { get; set; }
-        public Guid SubjectID { get; set; }
+        public Guid CourseID { get; set; }
         public DateTime GradeDate { get; set; }
-        public decimal Score { get; set; }
+        public decimal ScoreAverage { get; set; }
         public bool IsDeleted { get; set; }
 
-        [ForeignKey("StudentID")]
-        public virtual Users Student { get; set; }
-        [ForeignKey("SubjectID")]
-        public virtual Subjects Subject { get; set; }
+        public virtual User Student { get; set; }
+        public virtual Course Course { get; set; }
+        public virtual ICollection<GradeDetail> GradeDetails { get; set; } = new List<GradeDetail>();
     }
 }
