@@ -1,14 +1,15 @@
-﻿using Repositories.Models;
+﻿using Applications.DTO.Response;
+using Repositories.Models;
 
 namespace Services.Interface
 {
     public interface ISemesterService
     {
-        Task<List<Semester>> GetAllSemestersAsync();
-        Task<Semester> GetSemesterByIdAsync(Guid semesterId);
-        Task<int> CreateSemesterAsync(Semester semester);
-        Task<int> UpdateSemesterAsync(Semester semester);
+        Task<List<SemesterDto>> GetAllSemestersAsync();
+        Task<SemesterDto> GetSemesterByIdAsync(Guid semesterId);
+        Task<int> CreateSemesterAsync(SemesterDto semester);
+        Task<int> UpdateSemesterAsync(SemesterDto semester);
         Task<int> DeleteSemesterAsync(Guid semesterId);
-        Task<List<Semester>> SearchSemesterAsync(string SemesterCode);
+        Task<List<SemesterDto>> SearchSemesterAsync(string SemesterCode);
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Applications.DTO.Response;
+using Microsoft.AspNetCore.Mvc;
 using Repositories.Models;
 using Services.Interface;
 
@@ -14,13 +15,13 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
             _semesterService = semesterService;
         }
         [HttpGet]
-        public async Task<ActionResult<List<Semester>>> GetAllSemesters()
+        public async Task<ActionResult<List<SemesterDto>>> GetAllSemesters()
         {
             var result = await _semesterService.GetAllSemestersAsync();
             return Ok(result);
         }
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Semester>> GetSemesterById(Guid id)
+        [HttpGet("{id:guid}")]
+        public async Task<ActionResult<SemesterDto>> GetSemesterById(Guid id)
         {
             var result = await _semesterService.GetSemesterByIdAsync(id);
             if (result == null || result.SemesterID == Guid.Empty)
@@ -28,18 +29,23 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
             return Ok(result);
         }
         [HttpPost]
-        public async Task<ActionResult> CreateSemester([FromBody] Semester semester)
+        public async Task<ActionResult> CreateSemester([FromBody] SemesterDto semester)
         {
             if (semester == null)
                 return BadRequest("Semester cannot be null.");
             var rowsAffected = await _semesterService.CreateSemesterAsync(semester);
-            if (rowsAffected > 0)
-                return CreatedAtAction(nameof(GetSemesterById), new { id = semester.SemesterID }, semester);
+            if(rowsAffected > 0)
+            {
+                var createdSemester = await _semesterService.GetSemesterByIdAsync(semester.SemesterID);
+                return CreatedAtAction(nameof(GetSemesterById), new { id = createdSemester.SemesterID }, createdSemester);
+            }
             return BadRequest("Creation failed.");
         }
-        [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateSemester(Guid id, [FromBody] Semester semester)
+        [HttpPut("{id:guid}")]
+        public async Task<ActionResult> UpdateSemester(Guid id, [FromBody] SemesterDto semester)
         {
+            if (semester == null)
+                return BadRequest("Semester cannot be null.");
             if (id != semester.SemesterID)
                 return BadRequest("ID mismatch.");
             var rowsAffected = await _semesterService.UpdateSemesterAsync(semester);
@@ -47,7 +53,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
                 return NoContent();
             return NotFound();
         }
-        [HttpDelete("{id}")]
+        [HttpDelete("{id:guid}")]
         public async Task<ActionResult> DeleteSemester(Guid id)
         {
             var rowsAffected = await _semesterService.DeleteSemesterAsync(id);
@@ -55,12 +61,14 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
                 return NoContent();
             return NotFound("Semester not found.");
         }
-        [HttpGet("search/{semesterCode}")]
-        public async Task<ActionResult<List<Semester>>> SearchSemester(string semesterCode)
+        [HttpGet("semesterCode")]
+        public async Task<ActionResult<List<SemesterDto>>> SearchSemester(string semesterCode)
         {
+            if (string.IsNullOrEmpty(semesterCode))
+                return BadRequest("Semester code cannot be null or empty.");
             var result = await _semesterService.SearchSemesterAsync(semesterCode);
             if (result == null || result.Count == 0)
-                return NotFound("No semesters found with the given code.");
+                return NotFound("No semesters found with the provided code.");
             return Ok(result);
         }
     }
