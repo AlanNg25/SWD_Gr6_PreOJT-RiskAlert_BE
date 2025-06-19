@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Repositories.DBContext;
 using Repositories.Interfaces;
 using Repositories.Repositories;
@@ -12,15 +13,39 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<SemesterRepository>();
-builder.Services.AddScoped<ISemesterService, SemesterService>();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "Risk Alert API", Version = "v1" });
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Description = "Please enter JWT with Bearer into field",
+        Name = "Authorization",
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer"
+    });
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[] {}
+        }
+    });
+});
+
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<SemesterRepository>();
+builder.Services.AddScoped<ISemesterService, SemesterService>();
 
 // JWT Authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -39,48 +64,37 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 builder.Services.AddTransient<SqlConnection>(_ =>
-                new SqlConnection(builder.Configuration.GetConnectionString("RiskAlertDBConnection")));
+    new SqlConnection(builder.Configuration.GetConnectionString("RiskAlertDBConnection")));
 builder.Services.AddDbContext<RiskAlertDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("RiskAlertDBConnection")));
 
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowLocalhost5195",
-        builder =>
-        {
-            builder.WithOrigins("http://localhost:5195")
-                   .AllowAnyMethod()
-                   .AllowAnyHeader();
-        });
+    options.AddPolicy("AllowLocalhost5195", builder =>
+    {
+        builder.WithOrigins("http://localhost:5195")
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
 });
-
 
 var app = builder.Build();
 
-//using (var scope = app.Services.CreateScope())
-//{
-//    var dbContext = scope.ServiceProvider.GetRequiredService<RiskAlertDBContext>();
-//    if (dbContext.Database.IsRelational())
-//    {
-//        dbContext.Database.Migrate(); // Apply any pending migrations
-//    }
-//}
-
-app.UseCors("AllowLocalhost5195");
-
 // Configure the HTTP request pipeline.
-app.UseSwagger();
-app.UseSwaggerUI(options =>
+if (app.Environment.IsDevelopment())
 {
-    options.SwaggerEndpoint("/swagger/v1/swagger.json", "Risk Alert API V1");
-    options.RoutePrefix = string.Empty;
-});
-app.UseCors("AllowAll");
+    app.UseSwagger();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Risk Alert API V1");
+        options.RoutePrefix = string.Empty;
+    });
+}
 
 app.UseHttpsRedirection();
-
+app.UseCors("AllowLocalhost5195");
+app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();
