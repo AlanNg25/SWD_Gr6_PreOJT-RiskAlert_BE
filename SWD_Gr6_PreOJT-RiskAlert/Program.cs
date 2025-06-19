@@ -57,6 +57,15 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
+//using (var scope = app.Services.CreateScope())
+//{
+//    var dbContext = scope.ServiceProvider.GetRequiredService<RiskAlertDBContext>();
+//    if (dbContext.Database.IsRelational())
+//    {
+//        dbContext.Database.Migrate(); // Apply any pending migrations
+//    }
+//}
+
 app.UseCors("AllowLocalhost5195");
 
 // Configure the HTTP request pipeline.

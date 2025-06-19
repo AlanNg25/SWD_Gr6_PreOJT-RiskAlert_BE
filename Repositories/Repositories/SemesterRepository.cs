@@ -1,5 +1,6 @@
-﻿using GenderHealthcare.Repositories.ThangHN.Basic;
+﻿using Applications.DTO.Response;
 using Microsoft.EntityFrameworkCore;
+using Repositories.Basic;
 using Repositories.DBContext;
 using Repositories.Models;
 using System;
@@ -14,26 +15,58 @@ namespace Repositories.Repositories
     {
         public SemesterRepository() { }
         public SemesterRepository(RiskAlertDBContext context) => _context = context;
-        public async Task<List<Semester>> GetAllSemestersAsync()
+        public async Task<List<SemesterDto>> GetAllSemestersAsync()
         {
             var items = await _context.semester
                 .Where(s => !s.IsDeleted)
+                .Select(s => new SemesterDto 
+                {
+                    SemesterID = s.SemesterID,
+                    SemesterCode = s.SemesterCode,
+                    StartDate = s.StartDate,
+                    EndDate = s.EndDate,
+                    IsDeleted = s.IsDeleted,
+                })
                 .ToListAsync();
-            return items ?? new List<Semester>();
+            return items ?? new List<SemesterDto>();
         }
-        public async Task<Semester> GetSemesterByIdAsync(Guid semesterId)
+        public async Task<SemesterDto> GetSemesterByIdAsync(Guid semesterId)
         {
             var item = await _context.semester
+                .Select(s => new SemesterDto
+                {
+                    SemesterID = s.SemesterID,
+                    SemesterCode = s.SemesterCode,
+                    StartDate = s.StartDate,
+                    EndDate = s.EndDate,
+                    IsDeleted = s.IsDeleted,
+                })
                 .FirstOrDefaultAsync(s => s.SemesterID == semesterId && !s.IsDeleted);
-            return item ?? new Semester();
+            return item ?? new SemesterDto();
         }
-        public async Task<int> CreateSemesterAsync(Semester semester)
+        public async Task<int> CreateSemesterAsync(SemesterDto semester)
         {
-            _context.semester.Add(semester);
+            var item = new Semester
+            {
+                SemesterID = Guid.NewGuid(),
+                SemesterCode = semester.SemesterCode,
+                StartDate = semester.StartDate,
+                EndDate = semester.EndDate,
+                IsDeleted = semester.IsDeleted
+            };
+            _context.semester.Add(item);
             return await _context.SaveChangesAsync();
         }
-        public async Task<int> UpdateSemesterAsync(Semester semester)
+        public async Task<int> UpdateSemesterAsync(SemesterDto semester)
         {
+            var item = new Semester
+            {
+                SemesterID = semester.SemesterID,
+                SemesterCode = semester.SemesterCode,
+                StartDate = semester.StartDate,
+                EndDate = semester.EndDate,
+                IsDeleted = semester.IsDeleted
+            };
             _context.ChangeTracker.Clear();
             var tracker = _context.Attach(semester);
             tracker.State = EntityState.Modified;
@@ -50,12 +83,20 @@ namespace Repositories.Repositories
             }
             return 0; // No changes made if semester not found
         }
-        public async Task<List<Semester>> SearchSemesterAsync(string semesterName, string semesterCode)
+        public async Task<List<SemesterDto>> SearchSemesterAsync(string semesterCode)
         {
             var items = await _context.semester
-                .Where(s => !s.IsDeleted && (string.IsNullOrEmpty(semesterCode) || s.SemesterCode.Contains(semesterCode)))
+                .Where(s => s.SemesterCode.ToLower().Contains(semesterCode.ToLower()) && !s.IsDeleted)
+                .Select(s => new SemesterDto
+                {
+                    SemesterID = s.SemesterID,
+                    SemesterCode = s.SemesterCode,
+                    StartDate = s.StartDate,
+                    EndDate = s.EndDate,
+                    IsDeleted = s.IsDeleted,
+                })
                 .ToListAsync();
-            return items ?? new List<Semester>();
+            return items ?? new List<SemesterDto>();
         }
     }
 }

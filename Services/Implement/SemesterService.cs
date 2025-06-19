@@ -1,4 +1,5 @@
-﻿using Repositories.Models;
+﻿using Applications.DTO.Response;
+using Repositories.Models;
 using Repositories.Repositories;
 using Services.Interface;
 using System;
@@ -17,7 +18,7 @@ namespace Services.Implement
             _repository = repository;
         }
 
-        public async Task<int> CreateSemesterAsync(Semester semester)
+        public async Task<int> CreateSemesterAsync(SemesterDto semester)
         {
             return await _repository.CreateSemesterAsync(semester);
         }
@@ -27,22 +28,22 @@ namespace Services.Implement
             return await _repository.DeleteSemesterAsync(semesterId);
         }
 
-        public async Task<List<Semester>> GetAllSemestersAsync()
+        public async Task<List<SemesterDto>> GetAllSemestersAsync()
         {
             return await _repository.GetAllSemestersAsync();
         }
 
-        public async Task<Semester> GetSemesterByIdAsync(Guid semesterId)
+        public async Task<SemesterDto> GetSemesterByIdAsync(Guid semesterId)
         {
             return await _repository.GetSemesterByIdAsync(semesterId);
         }
 
-        public async Task<List<Semester>> SearchSemesterAsync(string SemesterCode)
+        public async Task<List<SemesterDto>> SearchSemesterAsync(string SemesterCode)
         {
-            return await _repository.SearchSemesterAsync(SemesterCode, SemesterCode);
+            return await _repository.SearchSemesterAsync(SemesterCode);
         }
 
-        public async Task<int> UpdateSemesterAsync(Semester semester)
+        public async Task<int> UpdateSemesterAsync(SemesterDto semester)
         {
             return await _repository.UpdateSemesterAsync(semester);
         }
