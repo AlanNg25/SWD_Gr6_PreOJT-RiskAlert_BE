@@ -1,6 +1,6 @@
-﻿using Applications.DTO;
-using GenderHealthcare.Repositories.ThangHN.Basic;
+﻿using Applications.DTO.Response;
 using Microsoft.EntityFrameworkCore;
+using Repositories.Basic;
 using Repositories.DBContext;
 using Repositories.Models;
 using System;

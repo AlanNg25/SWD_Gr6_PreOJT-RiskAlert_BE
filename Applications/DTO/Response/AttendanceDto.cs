@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Applications.DTO
+namespace Applications.DTO.Response
 {
     public class AttendanceDto
     {

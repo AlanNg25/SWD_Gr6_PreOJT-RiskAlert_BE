@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Repositories.DBContext;
 
-namespace GenderHealthcare.Repositories.ThangHN.Basic
+namespace Repositories.Basic
 {
     public class GenericRepository<T> where T : class
     {
