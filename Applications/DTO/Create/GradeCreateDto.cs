@@ -4,18 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Applications.DTO.Response
+namespace Applications.DTO.Create
 {
-    public class GradeDto
+    public class GradeCreateDto
     {
-        public Guid GradeID { get; set; }
         public Guid StudentID { get; set; }
         public Guid CourseID { get; set; }
         public DateTime GradeDate { get; set; }
         public decimal ScoreAverage { get; set; }
         public bool IsDeleted { get; set; }
-        public UserDto Student { get; set; }
-        public CourseDto Course { get; set; }
-        public IEnumerable<GradeDetailDto> GradeDetails { get; set; }
     }
 }

@@ -1,3 +1,4 @@
+using Applications.Mapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -41,11 +42,19 @@ builder.Services.AddSwaggerGen(c =>
         }
     });
 });
+//
+builder.Services.AddAutoMapper(
+    typeof(Program).Assembly,          // API
+    typeof(MappingProfile).Assembly    // Applications
+);
+
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<SemesterRepository>();
 builder.Services.AddScoped<ISemesterService, SemesterService>();
+builder.Services.AddScoped<IGradeService, GradeService>();
+builder.Services.AddScoped<IGradeRepository, GradeRepository>();
 
 // JWT Authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -96,5 +105,8 @@ app.UseCors("AllowLocalhost5195");
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
+
+app.UseRouting();
+app.UseEndpoints(endpoints => endpoints.MapControllers());
 
 app.Run();
