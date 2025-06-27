@@ -22,6 +22,38 @@ namespace Repositories.Repositories
             return await _context.user.FirstOrDefaultAsync(u => u.Email == email && !u.IsDeleted);
         }
 
+        public async Task<IEnumerable<User>> GetAllAsync()
+        {
+            return await _context.user
+                .Where(u => !u.IsDeleted)
+                .ToListAsync();
+        }
 
+        public async Task<User> GetByIdAsync(Guid id)
+        {
+            return await _context.user
+                .FirstOrDefaultAsync(u => u.UserID == id && !u.IsDeleted);
+        }
+
+        public async Task AddAsync(User user)
+        {
+            user.UserID = Guid.NewGuid();
+            await CreateAsync(user);
+        }
+
+        public async Task UpdateAsync(User user)
+        {
+            await UpdateAsync(user);
+        }
+
+        public async Task DeleteAsync(Guid id)
+        {
+            var user = await GetByIdAsync(id);
+            if (user != null)
+            {
+                user.IsDeleted = true;
+                await UpdateAsync(user);
+            }
+        }
     }
 }

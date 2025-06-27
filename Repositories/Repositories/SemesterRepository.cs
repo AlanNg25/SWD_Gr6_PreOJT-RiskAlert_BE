@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Repositories.Basic;
 using Repositories.DBContext;
+using Repositories.Interfaces;
 using Repositories.Models;
 using System;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Repositories.Repositories
 {
-    public class SemesterRepository : GenericRepository<Course>
+    public class SemesterRepository : GenericRepository<Course>, ISemesterRepository
     {
         public SemesterRepository() { }
         public SemesterRepository(RiskAlertDBContext context) => _context = context;

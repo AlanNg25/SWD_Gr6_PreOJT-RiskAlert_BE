@@ -48,13 +48,11 @@ builder.Services.AddAutoMapper(
     typeof(MappingProfile).Assembly    // Applications
 );
 
-
-builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IServiceProviders, ServiceProviders>();
 builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<SemesterRepository>();
 builder.Services.AddScoped<ISemesterService, SemesterService>();
 builder.Services.AddScoped<IGradeService, GradeService>();
-builder.Services.AddScoped<IGradeRepository, GradeRepository>();
 
 // JWT Authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

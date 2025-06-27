@@ -7,23 +7,24 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Repositories.Interfaces;
 using Services.Interface;
+using Repositories.Repositories;
 
 namespace Services.Implement
 {
     public class GradeService : IGradeService
     {
-        private readonly IGradeRepository _gradeRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
 
-        public GradeService(IGradeRepository gradeRepository, IMapper mapper)
+        public GradeService(IUnitOfWork unitOfWork, IMapper mapper)
         {
-            _gradeRepository = gradeRepository;
+            _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
 
         public async Task<GradeDto> GetByIdAsync(Guid id)
         {
-            var grade = await _gradeRepository.GetGradeByIdAsync(id);
+            var grade = await _unitOfWork.GradeRepository.GetGradeByIdAsync(id);
             if (grade == null)
                 throw new KeyNotFoundException("Grade not found");
             return _mapper.Map<GradeDto>(grade);
@@ -31,7 +32,7 @@ namespace Services.Implement
 
         public async Task<IEnumerable<GradeDto>> GetAllAsync()
         {
-            var grades = await _gradeRepository.GetAllAsync();
+            var grades = await _unitOfWork.GradeRepository.GetAllAsync();
             return _mapper.Map<IEnumerable<GradeDto>>(grades);
         }
 
@@ -39,24 +40,24 @@ namespace Services.Implement
         {
             if (grade.ScoreAverage < 0 || grade.ScoreAverage > 10)
                 throw new ArgumentException("Score average must be between 0 and 10");
-            await _gradeRepository.AddAsync(grade);
+            await _unitOfWork.GradeRepository.AddAsync(grade);
         }
 
         public async Task UpdateAsync(Grade grade)
         {
             if (grade.ScoreAverage < 0 || grade.ScoreAverage > 10)
                 throw new ArgumentException("Score average must be between 0 and 10");
-            await _gradeRepository.UpdateAsync(grade);
+            await _unitOfWork.GradeRepository.UpdateAsync(grade);
         }
 
         public async Task DeleteAsync(Guid id)
         {
-            await _gradeRepository.DeleteAsync(id);
+            await _unitOfWork.GradeRepository.DeleteAsync(id);
         }
 
         public async Task<GradeDetailDto> GetGradeDetailByIdAsync(Guid id)
         {
-            var gradeDetail = await _gradeRepository.GetGradeDetailByIdAsync(id);
+            var gradeDetail = await _unitOfWork.GradeRepository.GetGradeDetailByIdAsync(id);
             if (gradeDetail == null)
                 throw new KeyNotFoundException("GradeDetail not found");
             return _mapper.Map<GradeDetailDto>(gradeDetail);
@@ -64,7 +65,7 @@ namespace Services.Implement
 
         public async Task<IEnumerable<GradeDetailDto>> GetGradeDetailsByGradeIdAsync(Guid gradeId)
         {
-            var gradeDetails = await _gradeRepository.GetGradeDetailsByGradeIdAsync(gradeId);
+            var gradeDetails = await _unitOfWork.GradeRepository.GetGradeDetailsByGradeIdAsync(gradeId);
             return _mapper.Map<IEnumerable<GradeDetailDto>>(gradeDetails);
         }
 
@@ -74,7 +75,7 @@ namespace Services.Implement
                 throw new ArgumentException("Score must be between 0 and 10");
             if (gradeDetail.ScoreWeight < 0 || gradeDetail.ScoreWeight > 1)
                 throw new ArgumentException("Score weight must be between 0 and 1");
-            await _gradeRepository.AddGradeDetailAsync(gradeDetail);
+            await _unitOfWork.GradeRepository.AddGradeDetailAsync(gradeDetail);
             await RecalculateScoreAverageAsync(gradeDetail.GradeID);
         }
 
@@ -84,19 +85,19 @@ namespace Services.Implement
                 throw new ArgumentException("Score must be between 0 and 10");
             if (gradeDetail.ScoreWeight < 0 || gradeDetail.ScoreWeight > 1)
                 throw new ArgumentException("Score weight must be between 0 and 1");
-            await _gradeRepository.UpdateGradeDetailAsync(gradeDetail);
+            await _unitOfWork.GradeRepository.UpdateGradeDetailAsync(gradeDetail);
             await RecalculateScoreAverageAsync(gradeDetail.GradeID);
         }
 
         public async Task DeleteGradeDetailAsync(Guid id)
         {
-            await _gradeRepository.DeleteGradeDetailAsync(id);
+            await _unitOfWork.GradeRepository.DeleteGradeDetailAsync(id);
         }
 
         private async Task RecalculateScoreAverageAsync(Guid gradeId)
         {
             // Lấy toàn bộ GradeDetail của Grade này
-            var gradeDetails = await _gradeRepository.GetGradeDetailsByGradeIdAsync(gradeId);
+            var gradeDetails = await _unitOfWork.GradeRepository.GetGradeDetailsByGradeIdAsync(gradeId);
             if (gradeDetails == null || !gradeDetails.Any()) return;
 
             // ► Nếu có ScoreWeight thì tính trung bình có trọng số,
@@ -115,11 +116,11 @@ namespace Services.Implement
             }
 
             // Cập nhật vào Grade
-            var grade = await _gradeRepository.GetGradeByIdAsync(gradeId);
+            var grade = await _unitOfWork.GradeRepository.GetGradeByIdAsync(gradeId);
             if (grade == null) return;
 
             grade.ScoreAverage = Math.Round(average, 2);      // làm tròn 2 chữ số thập phân (tuỳ bạn)
-            await _gradeRepository.UpdateAsync(grade);        // đã có sẵn trong repo
+            await _unitOfWork.GradeRepository.UpdateAsync(grade);        // đã có sẵn trong repo
         }
 
     }

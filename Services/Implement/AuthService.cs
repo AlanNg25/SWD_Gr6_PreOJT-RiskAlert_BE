@@ -4,6 +4,7 @@ using Org.BouncyCastle.Crypto.Generators;
 using Repositories.Dtos;
 using Repositories.Interfaces;
 using Repositories.Models;
+using Repositories.Repositories;
 using Services.Interface;
 using System;
 using System.Collections.Generic;
@@ -17,19 +18,19 @@ namespace Services.Implement
 {
     public class AuthService : IAuthService
     {
-        private readonly IUserRepository _userRepository;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly IConfiguration _configuration;
         private readonly HashSet<string> _blacklistedTokens = new HashSet<string>();
 
-        public AuthService(IUserRepository userRepository, IConfiguration configuration)
+        public AuthService(IUnitOfWork unitOfWork, IConfiguration configuration)
         {
-            _userRepository = userRepository;
+            _unitOfWork = unitOfWork;
             _configuration = configuration;
         }
 
         public async Task<AuthResponseDto> LoginAsync(LoginDto loginDto)
         {
-            var user = await _userRepository.GetByEmailAsync(loginDto.Email);
+            var user = await _unitOfWork.UserRepository.GetByEmailAsync(loginDto.Email);
             if (user == null || !BCrypt.Net.BCrypt.Verify(loginDto.Password, user.Password))
             {
                 throw new UnauthorizedAccessException("Invalid email or password.");
