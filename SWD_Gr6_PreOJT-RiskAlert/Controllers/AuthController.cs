@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Repositories.Dtos;
+using Services.Implement;
 using Services.Interface;
 
 namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
@@ -10,20 +11,14 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly IAuthService _authService;
+        private readonly IServiceProviders _serviceProviders;
 
-        public AuthController(IAuthService authService)
+        public AuthController(IServiceProviders serviceProviders)
         {
-            _authService = authService;
+            _serviceProviders = serviceProviders;
         }
 
         /// <summary>
-        /// Logs in a user and returns a JWT token.
-        /// </summary>
-        /// <param name="loginDto">User credentials</param>
-        /// <returns>JWT token and user info</returns>
-        /// <response code="200">Returns the JWT token and user info</response>
-        /// <response code="401">Invalid email or password</response>
         [HttpPost("login")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
@@ -31,7 +26,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
         {
             try
             {
-                var response = await _authService.LoginAsync(loginDto);
+                var response = await _serviceProviders.AuthService.LoginAsync(loginDto);
                 return Ok(response);
             }
             catch (UnauthorizedAccessException)
@@ -52,7 +47,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
         public async Task<IActionResult> Logout()
         {
             var token = Request.Headers["Authorization"].ToString().Replace("Bearer ", "");
-            await _authService.LogoutAsync(token);
+            await _serviceProviders.AuthService.LogoutAsync(token);
             return NoContent();
         }
     }

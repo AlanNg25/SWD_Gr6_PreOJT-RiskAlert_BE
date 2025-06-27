@@ -1,6 +1,7 @@
 ﻿using Applications.DTO.Create;
 using Applications.DTO.Response;
 using AutoMapper;
+using Repositories.Models;
 using Repositories.Repositories;
 using Services.Interface;
 using System;

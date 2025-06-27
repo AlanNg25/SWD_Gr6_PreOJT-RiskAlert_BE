@@ -2,6 +2,7 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Repositories.Models;
+using Services.Implement;
 using Services.Interface;
 
 namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
@@ -10,12 +11,12 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
     [ApiController]
     public class GradeController : ControllerBase
     {
-        private readonly IGradeService _gradeService;
+        private readonly IServiceProviders _serviceProviders;
         private readonly IMapper _mapper;
 
-        public GradeController(IGradeService gradeService, IMapper mapper)
+        public GradeController(IServiceProviders serviceProviders, IMapper mapper)
         {
-            _gradeService = gradeService;
+            _serviceProviders = serviceProviders;
             _mapper = mapper;
         }
 
@@ -25,7 +26,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
         {
             try
             {
-                var grades = await _gradeService.GetAllAsync();
+                var grades = await _serviceProviders.GradeService.GetAllAsync();
                 return Ok(grades);
             }
             catch (Exception ex)
@@ -39,7 +40,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
         {
             try
             {
-                var grade = await _gradeService.GetByIdAsync(id);
+                var grade = await _serviceProviders.GradeService.GetByIdAsync(id);
                 return Ok(grade);
             }
             catch (KeyNotFoundException)
@@ -60,7 +61,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
                 var grade = _mapper.Map<Grade>(gradeCreateDto);
                 grade.GradeID = Guid.NewGuid(); // nếu bạn muốn tự generate ID
 
-                await _gradeService.AddAsync(grade);
+                await _serviceProviders.GradeService.AddAsync(grade);
 
                 return CreatedAtAction(nameof(GetById), new { id = grade.GradeID }, grade);
             }
@@ -82,7 +83,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
 
             try
             {
-                await _gradeService.UpdateAsync(grade);
+                await _serviceProviders.GradeService.UpdateAsync(grade);
                 return NoContent();
             }
             catch (ArgumentException ex)
@@ -100,7 +101,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
         {
             try
             {
-                await _gradeService.DeleteAsync(id);
+                await _serviceProviders.GradeService.DeleteAsync(id);
                 return NoContent();
             }
             catch (Exception ex)
@@ -115,7 +116,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
         {
             try
             {
-                var gradeDetails = await _gradeService.GetGradeDetailsByGradeIdAsync(gradeId);
+                var gradeDetails = await _serviceProviders.GradeService.GetGradeDetailsByGradeIdAsync(gradeId);
                 return Ok(gradeDetails);
             }
             catch (Exception ex)
@@ -129,7 +130,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
         {
             try
             {
-                var gradeDetail = await _gradeService.GetGradeDetailByIdAsync(id);
+                var gradeDetail = await _serviceProviders.GradeService.GetGradeDetailByIdAsync(id);
                 return Ok(gradeDetail);
             }
             catch (KeyNotFoundException)
@@ -147,7 +148,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
         {
             try
             {
-                await _gradeService.AddGradeDetailAsync(gradeDetail);
+                await _serviceProviders.GradeService.AddGradeDetailAsync(gradeDetail);
                 return CreatedAtAction(nameof(GetGradeDetailById), new { id = gradeDetail.GradeDetailID }, gradeDetail);
             }
             catch (ArgumentException ex)
@@ -168,7 +169,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
 
             try
             {
-                await _gradeService.UpdateGradeDetailAsync(gradeDetail);
+                await _serviceProviders.GradeService.UpdateGradeDetailAsync(gradeDetail);
                 return NoContent();
             }
             catch (ArgumentException ex)
@@ -186,7 +187,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
         {
             try
             {
-                await _gradeService.DeleteGradeDetailAsync(id);
+                await _serviceProviders.GradeService.DeleteGradeDetailAsync(id);
                 return NoContent();
             }
             catch (Exception ex)

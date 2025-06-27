@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.Extensions.Configuration;
 using Repositories.Repositories;
 using Services.Interface;
 using System;
@@ -25,17 +26,20 @@ namespace Services.Implement
         ISuggestionService SuggestionService { get; }
         ISyllabusService SyllabusService { get; }
         IUserService UserService { get; }
+        IAuthService AuthService { get; }
     }
 
     public class ServiceProviders : IServiceProviders
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
+        private IConfiguration _configuration;
 
-        public ServiceProviders(IUnitOfWork unitOfWork, IMapper mapper)
+        public ServiceProviders(IUnitOfWork unitOfWork, IMapper mapper, IConfiguration configuration)
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
+            _configuration = configuration;
         }
 
         private IAttendanceService _attendanceService;
@@ -120,6 +124,12 @@ namespace Services.Implement
         public IUserService UserService
         {
             get { return _userService ??= new UserService(_unitOfWork, _mapper); }
+        }
+
+        private IAuthService _authService;
+        public IAuthService AuthService
+        {
+            get { return _authService ??= new AuthService(_unitOfWork, _configuration); }
         }
     }
 }

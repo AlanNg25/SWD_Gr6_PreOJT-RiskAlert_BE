@@ -1,4 +1,4 @@
-using Applications.Mapper;
+﻿using Applications.Mapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
@@ -50,9 +50,6 @@ builder.Services.AddAutoMapper(
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IServiceProviders, ServiceProviders>();
-builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<ISemesterService, SemesterService>();
-builder.Services.AddScoped<IGradeService, GradeService>();
 
 // JWT Authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -99,12 +96,14 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseCors("AllowLocalhost5195");
-app.UseAuthentication();
-app.UseAuthorization();
-app.MapControllers();
 
-app.UseRouting();
-app.UseEndpoints(endpoints => endpoints.MapControllers());
+app.UseRouting();                       // 1. Định tuyến trước
+
+app.UseCors("AllowLocalhost5195");      // (tùy, miễn trước Endpoint)
+
+app.UseAuthentication();                // 2. Auth
+app.UseAuthorization();                 // 3. Authorize  ✅ GIỮA Routing & Endpoints
+
+app.MapControllers();                   // 4. Tạo Endpoints (thay cho UseEndpoints)
 
 app.Run();
