@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Applications.DTO.Google;
+using Google.Apis.Auth;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Org.BouncyCastle.Crypto.Generators;
 using Repositories.Dtos;
@@ -13,6 +15,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using static Google.Apis.Auth.GoogleJsonWebSignature;
 
 namespace Services.Implement
 {
@@ -40,6 +43,44 @@ namespace Services.Implement
             return new AuthResponseDto
             {
                 Token = token,
+                FullName = user.FullName,
+                Role = user.Role
+            };
+        }
+
+        public async Task<AuthResponseDto> LoginWithGoogleAsync(GoogleLoginDto dto)
+        {
+            // 1. Xác thực ID token (chữ ký, audience, exp…)
+            var payload = await GoogleJsonWebSignature.ValidateAsync(
+                dto.IdToken,
+                new ValidationSettings { Audience = new[] { _configuration["Google:ClientId"] } });
+
+            // 2. Lấy email
+            var email = payload.Email;
+            var user = await _unitOfWork.UserRepository.GetByEmailAsync(email);
+
+            // 2a. Nếu user CHƯA tồn tại → tạo “tài khoản Google” mặc định
+            if (user == null)
+            {
+                user = new User
+                {
+                    UserID = Guid.NewGuid(),
+                    Email = email,
+                    FullName = payload.Name ?? email,
+                    Role = "Student",          // gán role mặc định
+                    Status = 1,
+                    CreatedAt = DateTime.UtcNow,
+                    IsDeleted = false,
+                    Password = ""                 // để trống – chỉ login qua Google
+                };
+                await _unitOfWork.UserRepository.AddAsync(user);
+                await _unitOfWork.SaveChangesWithTransactionAsync();
+            }
+
+            // 3. Tạo JWT nội bộ
+            return new AuthResponseDto
+            {
+                Token = GenerateJwtToken(user),
                 FullName = user.FullName,
                 Role = user.Role
             };

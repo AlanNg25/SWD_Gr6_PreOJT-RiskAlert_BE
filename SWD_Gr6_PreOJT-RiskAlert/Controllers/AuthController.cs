@@ -1,4 +1,6 @@
-﻿using Azure.Core;
+﻿using Applications.DTO.Google;
+using Azure.Core;
+using Google.Apis.Auth;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Repositories.Dtos;
@@ -50,5 +52,26 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
             await _serviceProviders.AuthService.LogoutAsync(token);
             return NoContent();
         }
+
+        [HttpPost("google")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<IActionResult> GoogleLogin([FromBody] GoogleLoginDto dto)
+        {
+            try
+            {
+                var res = await _serviceProviders.AuthService.LoginWithGoogleAsync(dto);
+                return Ok(res);
+            }
+            catch (InvalidJwtException)     // từ GoogleJsonWebSignature
+            {
+                return Unauthorized("Invalid Google token.");
+            }
+            catch (Exception)
+            {
+                return StatusCode(500, "Server error.");
+            }
+        }
+
     }
 }

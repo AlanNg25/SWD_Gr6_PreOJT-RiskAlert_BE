@@ -1,4 +1,5 @@
-﻿using Repositories.Dtos;
+﻿using Applications.DTO.Google;
+using Repositories.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace Services.Interface
     public interface IAuthService
     {
         Task<AuthResponseDto> LoginAsync(LoginDto loginDto);
+        Task<AuthResponseDto> LoginWithGoogleAsync(GoogleLoginDto dto);  // Google login
         Task LogoutAsync(string token);
     }
 }
