@@ -12,8 +12,8 @@ using Repositories.DBContext;
 namespace Repositories.Migrations
 {
     [DbContext(typeof(RiskAlertDBContext))]
-    [Migration("20250619014932_InitCreate")]
-    partial class InitCreate
+    [Migration("20250628123728_AddUserCodeProperty")]
+    partial class AddUserCodeProperty
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -474,6 +474,10 @@ namespace Repositories.Migrations
                     b.Property<Guid>("UserID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");

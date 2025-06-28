@@ -45,9 +45,10 @@ namespace Services.Implement
                 throw new ArgumentException("Password is required");
 
             var user = _mapper.Map<User>(userDto);
-            user.CreatedAt = DateTime.UtcNow; // Set creation timestamp
-            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);   // cost mặc định = 10
+            user.CreatedAt = DateTime.UtcNow;
+            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
             await _unitOfWork.UserRepository.AddAsync(user);
+
             await _unitOfWork.SaveChangesWithTransactionAsync();
         }
 

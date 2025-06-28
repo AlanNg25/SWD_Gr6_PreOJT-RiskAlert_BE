@@ -43,8 +43,10 @@ namespace Repositories.Repositories
 
         public async Task UpdateAsync(User user)
         {
-            await UpdateAsync(user);
+            // gọi phương thức Update từ GenericRepository
+            await base.UpdateAsync(user);
         }
+
 
         public async Task DeleteAsync(Guid id)
         {

@@ -6,11 +6,11 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class SyllabusController : ControllerBase
+    public class UserController : ControllerBase
     {
         private readonly IServiceProviders _serviceProviders;
 
-        public SyllabusController(IServiceProviders serviceProviders)
+        public UserController(IServiceProviders serviceProviders)
         {
             _serviceProviders = serviceProviders;
         }
@@ -20,8 +20,8 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
         {
             try
             {
-                var syllabuses = await _serviceProviders.SyllabusService.GetAllAsync();
-                return Ok(syllabuses);
+                var users = await _serviceProviders.UserService.GetAllAsync();
+                return Ok(users);
             }
             catch (Exception ex)
             {
@@ -34,8 +34,8 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
         {
             try
             {
-                var syllabus = await _serviceProviders.SyllabusService.GetByIdAsync(id);
-                return Ok(syllabus);
+                var user = await _serviceProviders.UserService.GetByIdAsync(id);
+                return Ok(user);
             }
             catch (KeyNotFoundException ex)
             {
@@ -48,12 +48,12 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] SyllabusCreateDto syllabusDto)
+        public async Task<IActionResult> Create([FromBody] UserCreateDto userDto)
         {
             try
             {
-                await _serviceProviders.SyllabusService.AddAsync(syllabusDto);
-                return CreatedAtAction(nameof(GetById), new { id = Guid.NewGuid() }, syllabusDto);
+                await _serviceProviders.UserService.AddAsync(userDto);
+                return CreatedAtAction(nameof(GetById), new { id = Guid.NewGuid() }, userDto);
             }
             catch (ArgumentException ex)
             {
@@ -66,11 +66,11 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(Guid id, [FromBody] SyllabusCreateDto syllabusDto)
+        public async Task<IActionResult> Update(Guid id, [FromBody] UserCreateDto userDto)
         {
             try
             {
-                await _serviceProviders.SyllabusService.UpdateAsync(id, syllabusDto);
+                await _serviceProviders.UserService.UpdateAsync(id, userDto);
                 return NoContent();
             }
             catch (KeyNotFoundException ex)
@@ -92,7 +92,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
         {
             try
             {
-                await _serviceProviders.SyllabusService.DeleteAsync(id);
+                await _serviceProviders.UserService.DeleteAsync(id);
                 return NoContent();
             }
             catch (KeyNotFoundException ex)
@@ -105,6 +105,4 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
             }
         }
     }
-
-    
 }

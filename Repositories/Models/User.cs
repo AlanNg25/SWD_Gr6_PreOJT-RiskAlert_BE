@@ -14,6 +14,7 @@ namespace Repositories.Models
         public string Phone { get; set; }
         public Guid MajorID { get; set; }
         public string Role { get; set; }
+        public string Code { get; set; }
         public int Status { get; set; }
         public DateTime CreatedAt { get; set; }
         public bool IsDeleted { get; set; }

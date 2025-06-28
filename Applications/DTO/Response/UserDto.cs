@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Applications.DTO.Response
+﻿namespace Applications.DTO.Response
 {
     public class UserDto
     {
@@ -14,6 +8,7 @@ namespace Applications.DTO.Response
         public string Phone { get; set; }
         public Guid MajorID { get; set; }
         public string Role { get; set; }
+        public string Code { get; set; } 
         public int Status { get; set; }
         public DateTime CreatedAt { get; set; }
         public bool IsDeleted { get; set; }

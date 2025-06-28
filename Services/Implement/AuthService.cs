@@ -59,23 +59,8 @@ namespace Services.Implement
             var email = payload.Email;
             var user = await _unitOfWork.UserRepository.GetByEmailAsync(email);
 
-            // 2a. Nếu user CHƯA tồn tại → tạo “tài khoản Google” mặc định
             if (user == null)
-            {
-                user = new User
-                {
-                    UserID = Guid.NewGuid(),
-                    Email = email,
-                    FullName = payload.Name ?? email,
-                    Role = "Student",          // gán role mặc định
-                    Status = 1,
-                    CreatedAt = DateTime.UtcNow,
-                    IsDeleted = false,
-                    Password = ""                 // để trống – chỉ login qua Google
-                };
-                await _unitOfWork.UserRepository.AddAsync(user);
-                await _unitOfWork.SaveChangesWithTransactionAsync();
-            }
+                throw new UnauthorizedAccessException("This Google account is not registered.");
 
             // 3. Tạo JWT nội bộ
             return new AuthResponseDto
