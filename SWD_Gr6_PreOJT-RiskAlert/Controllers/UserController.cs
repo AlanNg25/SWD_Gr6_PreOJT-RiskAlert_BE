@@ -50,7 +50,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
             }
         }
 
-        [Authorize]
+        //[Authorize]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] UserCreateDto userDto)
         {

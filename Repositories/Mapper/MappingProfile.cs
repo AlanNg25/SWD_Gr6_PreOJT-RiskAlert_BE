@@ -73,7 +73,9 @@ namespace Applications.Mapper
 
             // User mappings
             CreateMap<User, UserDto>();
-            CreateMap<UserCreateDto, User>();
+            CreateMap<UserCreateDto, User>()
+    .ForMember(dest => dest.Password, opt => opt.Ignore());
+
         }
     }
 }

@@ -63,11 +63,17 @@ namespace Services.Implement
             if (existingUser == null)
                 throw new KeyNotFoundException("User not found");
 
-            var updatedUser = _mapper.Map(userDto, existingUser);
-            updatedUser.UserID = id; // Ensure ID is not overwritten
-            await _unitOfWork.UserRepository.UpdateAsync(updatedUser);
+            // Cập nhật thông tin từ DTO
+            _mapper.Map(userDto, existingUser);
+
+            // Mã hóa mật khẩu mới
+            existingUser.Password = BCrypt.Net.BCrypt.HashPassword(userDto.Password);
+            existingUser.UserID = id;
+
+            await _unitOfWork.UserRepository.UpdateAsync(existingUser);
             await _unitOfWork.SaveChangesWithTransactionAsync();
         }
+
 
         public async Task DeleteAsync(Guid id)
         {
