@@ -15,5 +15,6 @@ namespace Services.Interface
         Task AddAsync(AttendanceCreateDto attendanceDto);
         Task UpdateAsync(Guid id, AttendanceCreateDto attendanceDto);
         Task DeleteAsync(Guid id);
+        Task<IEnumerable<AttendanceDto>> GetByUserIdAsync(Guid userId);
     }
 }

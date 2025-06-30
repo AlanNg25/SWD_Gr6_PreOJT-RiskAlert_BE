@@ -50,5 +50,13 @@ namespace Repositories.Repositories
                 await UpdateAsync(notification);
             }
         }
+
+        public async Task<IEnumerable<Notification>> GetByUserIdAsync(Guid userId)
+        {
+            return await _context.notification
+                .Where(n => n.ReceiverID == userId && !n.IsDeleted)
+                .ToListAsync();
+        }
+
     }
 }

@@ -97,5 +97,16 @@ namespace Repositories.Repositories
                 .ExecuteUpdateAsync(setters => setters
                     .SetProperty(gd => gd.IsDeleted, true));
         }
+
+
+        public async Task<IEnumerable<Grade>> GetByUserIdAsync(Guid userId)
+        {
+            return await _context.grade
+                .Include(g => g.GradeDetails)
+                .Include(g => g.Course)
+                .Where(g => g.StudentID == userId && !g.IsDeleted)
+                .ToListAsync();
+        }
+
     }
 }

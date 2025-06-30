@@ -61,5 +61,12 @@ namespace Services.Implement
             await _unitOfWork.NotificationRepository.DeleteAsync(id);
             await _unitOfWork.SaveChangesWithTransactionAsync();
         }
+
+        public async Task<IEnumerable<NotificationDto>> GetByUserIdAsync(Guid userId)
+        {
+            var notifications = await _unitOfWork.NotificationRepository.GetByUserIdAsync(userId);
+            return _mapper.Map<IEnumerable<NotificationDto>>(notifications);
+        }
+
     }
 }

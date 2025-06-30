@@ -61,5 +61,12 @@ namespace Services.Implement
             await _unitOfWork.AttendanceRepository.DeleteAsync(id);
             await _unitOfWork.SaveChangesWithTransactionAsync();
         }
+
+        public async Task<IEnumerable<AttendanceDto>> GetByUserIdAsync(Guid userId)
+        {
+            var attendances = await _unitOfWork.AttendanceRepository.GetByUserIdAsync(userId);
+            return _mapper.Map<IEnumerable<AttendanceDto>>(attendances);
+        }
+
     }
 }

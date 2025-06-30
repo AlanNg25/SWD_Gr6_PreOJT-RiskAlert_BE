@@ -14,5 +14,6 @@ namespace Repositories.Interfaces
         Task AddAsync(Attendance attendance);
         Task UpdateAsync(Attendance attendance);
         Task DeleteAsync(Guid id);
+        Task<IEnumerable<Attendance>> GetByUserIdAsync(Guid userId);
     }
 }

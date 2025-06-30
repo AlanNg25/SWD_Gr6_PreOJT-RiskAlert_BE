@@ -104,5 +104,20 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
+        [HttpGet("by-user/{userId}")]
+        public async Task<IActionResult> GetByUserId(Guid userId)
+        {
+            try
+            {
+                var results = await _serviceProviders.NotificationService.GetByUserIdAsync(userId);
+                return Ok(results);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
+
     }
 }

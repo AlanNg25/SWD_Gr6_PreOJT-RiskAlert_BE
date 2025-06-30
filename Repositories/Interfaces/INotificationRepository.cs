@@ -14,5 +14,6 @@ namespace Repositories.Interfaces
         Task AddAsync(Notification notification);
         Task UpdateAsync(Notification notification);
         Task DeleteAsync(Guid id);
+        Task<IEnumerable<Notification>> GetByUserIdAsync(Guid userId);
     }
 }

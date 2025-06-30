@@ -19,5 +19,6 @@ namespace Repositories.Interfaces
         Task AddGradeDetailAsync(GradeDetail gradeDetail);
         Task UpdateGradeDetailAsync(GradeDetail gradeDetail);
         Task DeleteGradeDetailAsync(Guid id);
+        Task<IEnumerable<Grade>> GetByUserIdAsync(Guid userId);
     }
 }

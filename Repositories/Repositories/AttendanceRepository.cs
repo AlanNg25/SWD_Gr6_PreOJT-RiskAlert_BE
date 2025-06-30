@@ -52,5 +52,14 @@ namespace Repositories.Repositories
                 await UpdateAsync(attendance);
             }
         }
+
+        public async Task<IEnumerable<Attendance>> GetByUserIdAsync(Guid userId)
+        {
+            return await _context.attendance
+                .Include(a => a.Enrollment)
+                .Where(a => a.Enrollment.StudentID == userId && !a.IsDeleted)
+                .ToListAsync();
+        }
+
     }
 }
