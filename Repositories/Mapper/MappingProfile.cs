@@ -21,6 +21,11 @@ namespace Applications.Mapper
             // Attendance mappings
             CreateMap<Attendance, AttendanceDto>();
             CreateMap<AttendanceCreateDto, Attendance>();
+            // Attendance with Course & Semester mapping
+            CreateMap<Attendance, AttendanceWithCourseSemesterDto>()
+                .ForMember(dest => dest.Course, opt => opt.MapFrom(src => src.Enrollment.Course))
+                .ForMember(dest => dest.Semester, opt => opt.MapFrom(src => src.Enrollment.Course.Semester));
+
 
             // Course mappings
             CreateMap<Course, CourseDto>();

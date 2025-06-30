@@ -57,7 +57,9 @@ namespace Repositories.Repositories
         {
             return await _context.attendance
                 .Include(a => a.Enrollment)
-                .Where(a => a.Enrollment.StudentID == userId && !a.IsDeleted)
+                    .ThenInclude(e => e.Course)
+                        .ThenInclude(c => c.Semester)
+                .Where(a => a.Enrollment.StudentID == userId && !a.IsDeleted && !a.Enrollment.IsDeleted && !a.Enrollment.Course.IsDeleted)
                 .ToListAsync();
         }
 

@@ -112,7 +112,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
         }
 
         [Authorize]
-        [HttpGet("by-user/{user-Id}")]
+        [HttpGet("by-user/{userId}")]
         public async Task<IActionResult> GetByUserId(Guid userId)
         {
             try
@@ -125,6 +125,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
 
     }
 }
