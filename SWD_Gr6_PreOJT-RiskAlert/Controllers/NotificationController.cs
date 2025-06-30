@@ -112,7 +112,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
         }
 
         [Authorize]
-        [HttpGet("by-user/{userId}")]
+        [HttpGet("by-user/{user-Id}")]
         public async Task<IActionResult> GetByUserId(Guid userId)
         {
             try
