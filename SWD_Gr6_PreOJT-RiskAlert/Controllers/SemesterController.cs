@@ -1,4 +1,5 @@
 ﻿using Applications.DTO.Response;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Repositories.Models;
 using Services.Implement;
@@ -15,12 +16,16 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
         {
             _serviceProviders = serviceProviders;
         }
+
+        [Authorize]
         [HttpGet]
         public async Task<ActionResult<List<SemesterDto>>> GetAllSemesters()
         {
             var result = await _serviceProviders.SemesterService.GetAllSemestersAsync();
             return Ok(result);
         }
+
+        [Authorize]
         [HttpGet("{id:guid}")]
         public async Task<ActionResult<SemesterDto>> GetSemesterById(Guid id)
         {
@@ -29,6 +34,8 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
                 return NotFound();
             return Ok(result);
         }
+
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult> CreateSemester([FromBody] SemesterDto semester)
         {
@@ -42,6 +49,8 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
             }
             return BadRequest("Creation failed.");
         }
+
+        [Authorize]
         [HttpPut("{id:guid}")]
         public async Task<ActionResult> UpdateSemester(Guid id, [FromBody] SemesterDto semester)
         {
@@ -54,6 +63,8 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
                 return NoContent();
             return NotFound();
         }
+
+        [Authorize]
         [HttpDelete("{id:guid}")]
         public async Task<ActionResult> DeleteSemester(Guid id)
         {
@@ -62,6 +73,8 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
                 return NoContent();
             return NotFound("Semester not found.");
         }
+
+        [Authorize]
         [HttpGet("semesterCode")]
         public async Task<ActionResult<List<SemesterDto>>> SearchSemester(string semesterCode)
         {

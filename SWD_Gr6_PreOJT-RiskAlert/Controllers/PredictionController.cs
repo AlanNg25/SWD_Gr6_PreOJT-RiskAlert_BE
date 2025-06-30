@@ -1,4 +1,5 @@
 ﻿using Applications.DTO.Create;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services.Implement;
 
@@ -15,6 +16,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
             _serviceProviders = serviceProviders;
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -29,6 +31,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {
@@ -47,6 +50,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] PredictionCreateDto predictionDto)
         {
@@ -65,6 +69,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
             }
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(Guid id, [FromBody] PredictionCreateDto predictionDto)
         {
@@ -87,6 +92,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {

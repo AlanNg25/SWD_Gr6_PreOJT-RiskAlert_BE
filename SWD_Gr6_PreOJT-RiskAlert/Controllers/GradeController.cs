@@ -1,5 +1,6 @@
 ﻿using Applications.DTO.Create;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Repositories.Models;
 using Services.Implement;
@@ -21,6 +22,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
         }
 
         // Grade CRUD
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -35,6 +37,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(Guid id)
         {
@@ -53,6 +56,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] GradeCreateDto gradeCreateDto)
         {
@@ -75,6 +79,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
             }
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(Guid id, [FromBody] Grade grade)
         {
@@ -96,6 +101,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(Guid id)
         {
@@ -111,6 +117,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
         }
 
         // GradeDetail CRUD
+        [Authorize]
         [HttpGet("{gradeId}/details")]
         public async Task<IActionResult> GetGradeDetails(Guid gradeId)
         {
@@ -125,6 +132,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet("details/{id}")]
         public async Task<IActionResult> GetGradeDetailById(Guid id)
         {
@@ -143,6 +151,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost("details")]
         public async Task<IActionResult> CreateGradeDetail([FromBody] GradeDetail gradeDetail)
         {
@@ -161,6 +170,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
             }
         }
 
+        [Authorize]
         [HttpPut("details/{id}")]
         public async Task<IActionResult> UpdateGradeDetail(Guid id, [FromBody] GradeDetail gradeDetail)
         {
@@ -182,6 +192,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete("details/{id}")]
         public async Task<IActionResult> DeleteGradeDetail(Guid id)
         {
@@ -196,6 +207,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet("by-user/{userId}")]
         public async Task<IActionResult> GetByUserId(Guid userId)
         {
