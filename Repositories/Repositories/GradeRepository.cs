@@ -102,11 +102,12 @@ namespace Repositories.Repositories
         public async Task<IEnumerable<Grade>> GetByUserIdAsync(Guid userId)
         {
             return await _context.grade
-                .Include(g => g.GradeDetails)
                 .Include(g => g.Course)
-                .Where(g => g.StudentID == userId && !g.IsDeleted)
+                    .ThenInclude(c => c.Semester)
+                .Where(g => g.StudentID == userId && !g.IsDeleted && !g.Course.IsDeleted)
                 .ToListAsync();
         }
+
 
     }
 }

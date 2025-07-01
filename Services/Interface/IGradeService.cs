@@ -20,6 +20,6 @@ namespace Services.Interface
         Task AddGradeDetailAsync(GradeDetail gradeDetail);
         Task UpdateGradeDetailAsync(GradeDetail gradeDetail);
         Task DeleteGradeDetailAsync(Guid id);
-        Task<IEnumerable<GradeDto>> GetByUserIdAsync(Guid userId);
+        Task<IEnumerable<GradeWithCourseSemesterDto>> GetByUserIdAsync(Guid userId);
     }
 }

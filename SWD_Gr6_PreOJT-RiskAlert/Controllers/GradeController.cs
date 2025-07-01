@@ -213,14 +213,15 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
         {
             try
             {
-                var results = await _serviceProviders.GradeService.GetByUserIdAsync(userId);
-                return Ok(results);
+                var result = await _serviceProviders.GradeService.GetByUserIdAsync(userId);
+                return Ok(result);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.Message);
+                return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+
 
     }
 }

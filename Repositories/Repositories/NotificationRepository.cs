@@ -54,9 +54,15 @@ namespace Repositories.Repositories
         public async Task<IEnumerable<Notification>> GetByUserIdAsync(Guid userId)
         {
             return await _context.notification
+                .Include(n => n.Receiver)
+                .Include(n => n.Receiver.Enrollments.Where(e => !e.IsDeleted)) // filter trong navigation
+                    .ThenInclude(e => e.Course)
+                        .ThenInclude(c => c.Semester)
                 .Where(n => n.ReceiverID == userId && !n.IsDeleted)
                 .ToListAsync();
         }
+
+
 
     }
 }

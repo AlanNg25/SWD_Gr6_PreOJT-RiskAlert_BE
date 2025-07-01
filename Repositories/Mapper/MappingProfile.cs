@@ -17,6 +17,9 @@ namespace Applications.Mapper
             CreateMap<GradeCreateDto, Grade>();
             CreateMap<GradeDetail, GradeDetailDto>();
             CreateMap<GradeDetailCreateDto, GradeDetail>();
+            CreateMap<Grade, GradeWithCourseSemesterDto>()
+                .ForMember(dest => dest.Course, opt => opt.MapFrom(src => src.Course))
+                .ForMember(dest => dest.Semester, opt => opt.MapFrom(src => src.Course.Semester));
 
             // Attendance mappings
             CreateMap<Attendance, AttendanceDto>();
@@ -46,6 +49,9 @@ namespace Applications.Mapper
             // Notification mappings
             CreateMap<Notification, NotificationDto>();
             CreateMap<NotificationCreateDto, Notification>();
+            CreateMap<Notification, NotificationWithCourseSemesterDto>();
+
+
 
             // Prediction mappings
             CreateMap<Prediction, PredictionDto>();

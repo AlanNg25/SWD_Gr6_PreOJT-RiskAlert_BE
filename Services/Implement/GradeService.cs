@@ -123,11 +123,12 @@ namespace Services.Implement
             await _unitOfWork.GradeRepository.UpdateAsync(grade);        // đã có sẵn trong repo
         }
 
-        public async Task<IEnumerable<GradeDto>> GetByUserIdAsync(Guid userId)
+        public async Task<IEnumerable<GradeWithCourseSemesterDto>> GetByUserIdAsync(Guid userId)
         {
             var grades = await _unitOfWork.GradeRepository.GetByUserIdAsync(userId);
-            return _mapper.Map<IEnumerable<GradeDto>>(grades);
+            return _mapper.Map<IEnumerable<GradeWithCourseSemesterDto>>(grades);
         }
+
 
 
     }

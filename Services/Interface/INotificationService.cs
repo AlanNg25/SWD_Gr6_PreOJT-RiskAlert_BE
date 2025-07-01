@@ -15,7 +15,7 @@ namespace Services.Interface
         Task AddAsync(NotificationCreateDto notificationDto);
         Task UpdateAsync(Guid id, NotificationCreateDto notificationDto);
         Task DeleteAsync(Guid id);
-        Task<IEnumerable<NotificationDto>> GetByUserIdAsync(Guid userId);
+        Task<IEnumerable<NotificationWithCourseSemesterDto>> GetByUserIdAsync(Guid userId);
 
     }
 }

@@ -62,11 +62,31 @@ namespace Services.Implement
             await _unitOfWork.SaveChangesWithTransactionAsync();
         }
 
-        public async Task<IEnumerable<NotificationDto>> GetByUserIdAsync(Guid userId)
+        public async Task<IEnumerable<NotificationWithCourseSemesterDto>> GetByUserIdAsync(Guid userId)
         {
             var notifications = await _unitOfWork.NotificationRepository.GetByUserIdAsync(userId);
-            return _mapper.Map<IEnumerable<NotificationDto>>(notifications);
+
+            var result = new List<NotificationWithCourseSemesterDto>();
+
+            foreach (var n in notifications)
+            {
+                var dto = _mapper.Map<NotificationWithCourseSemesterDto>(n);
+
+                var enrollment = n.Receiver?.Enrollments
+                    .FirstOrDefault(e => !e.IsDeleted && e.Course != null && !e.Course.IsDeleted);
+
+                if (enrollment?.Course != null)
+                {
+                    dto.Course = _mapper.Map<CourseDto>(enrollment.Course);
+                    dto.Semester = _mapper.Map<SemesterDto>(enrollment.Course.Semester);
+                }
+
+                result.Add(dto);
+            }
+
+            return result;
         }
+
 
     }
 }
