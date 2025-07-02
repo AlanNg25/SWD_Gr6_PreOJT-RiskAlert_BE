@@ -57,5 +57,12 @@ namespace Repositories.Repositories
                 await UpdateAsync(user);
             }
         }
+
+        public async Task<IEnumerable<User>> GetByRoleAsync(string role)
+        {
+            return await _context.user
+                .Where(u => u.Role == role && !u.IsDeleted)
+                .ToListAsync();
+        }
     }
 }

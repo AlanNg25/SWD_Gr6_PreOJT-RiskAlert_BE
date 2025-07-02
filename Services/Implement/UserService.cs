@@ -84,5 +84,11 @@ namespace Services.Implement
             await _unitOfWork.UserRepository.DeleteAsync(id);
             await _unitOfWork.SaveChangesWithTransactionAsync();
         }
+
+        public async Task<IEnumerable<UserDto>> GetByRoleAsync(string role)
+        {
+            var users = await _unitOfWork.UserRepository.GetByRoleAsync(role);
+            return _mapper.Map<IEnumerable<UserDto>>(users);
+        }
     }
 }

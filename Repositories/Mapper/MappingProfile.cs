@@ -49,16 +49,17 @@ namespace Applications.Mapper
             // Notification mappings
             CreateMap<Notification, NotificationDto>();
             CreateMap<NotificationCreateDto, Notification>();
-            CreateMap<Notification, NotificationWithCourseSemesterDto>();
-
-
+            CreateMap<Notification, NotificationWithCourseSemesterDto>()
+                .ForMember(dest => dest.NotificationID, opt => opt.MapFrom(src => src.NotificationID));
 
             // Prediction mappings
-            CreateMap<Prediction, PredictionDto>();
+            CreateMap<Prediction, PredictionDto>()
+                .ForMember(dest => dest.PredictionID, opt => opt.MapFrom(src => src.PredictionID));
             CreateMap<PredictionCreateDto, Prediction>();
 
             // RiskAnalysis mappings
-            CreateMap<RiskAnalysis, RiskAnalysisDto>();
+            CreateMap<RiskAnalysis, RiskAnalysisDto>()
+                .ForMember(dest => dest.RiskID, opt => opt.MapFrom(src => src.RiskID));
             CreateMap<RiskAnalysisCreateDto, RiskAnalysis>();
 
             // Semester mappings
@@ -70,7 +71,8 @@ namespace Applications.Mapper
             CreateMap<SubjectCreateDto, Subject>();
 
             // Suggestion mappings
-            CreateMap<Suggestion, SuggestionDto>();
+            CreateMap<Suggestion, SuggestionDto>()
+                .ForMember(dest => dest.SuggestionID, opt => opt.MapFrom(src => src.SuggestionID));
             CreateMap<SuggestionCreateDto, Suggestion>();
 
             // Syllabus mappings
