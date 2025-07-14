@@ -40,7 +40,7 @@ namespace Repositories.Repositories
 
         public async Task UpdateAsync(Attendance attendance)
         {
-            await UpdateAsync(attendance);
+            await base.UpdateAsync(attendance);
         }
 
         public async Task DeleteAsync(Guid id)

@@ -38,7 +38,7 @@ namespace Repositories.Repositories
 
         public async Task UpdateAsync(Notification notification)
         {
-            await UpdateAsync(notification);
+            await base.UpdateAsync(notification);
         }
 
         public async Task DeleteAsync(Guid id)

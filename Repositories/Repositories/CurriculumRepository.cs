@@ -38,7 +38,7 @@ namespace Repositories.Repositories
 
         public async Task UpdateAsync(Curriculum curriculum)
         {
-            await UpdateAsync(curriculum);
+            await base.UpdateAsync(curriculum);
         }
 
         public async Task DeleteAsync(Guid id)

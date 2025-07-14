@@ -11,7 +11,5 @@ namespace Applications.DTO.Create
         public Guid StudentID { get; set; }
         public Guid CourseID { get; set; }
         public DateTime GradeDate { get; set; }
-        public decimal ScoreAverage { get; set; }
-        public bool IsDeleted { get; set; }
     }
 }

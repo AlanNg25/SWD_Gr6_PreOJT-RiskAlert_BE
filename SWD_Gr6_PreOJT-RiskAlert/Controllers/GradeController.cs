@@ -81,15 +81,16 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
 
         [Authorize]
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(Guid id, [FromBody] Grade grade)
+        public async Task<IActionResult> Update(Guid id, [FromBody] GradeCreateDto gradeUpdateDto)
         {
-            if (id != grade.GradeID)
-                return BadRequest("Grade ID mismatch");
-
             try
             {
-                await _serviceProviders.GradeService.UpdateAsync(grade);
+                await _serviceProviders.GradeService.UpdateAsync(id, gradeUpdateDto);
                 return NoContent();
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound("Grade not found");
             }
             catch (ArgumentException ex)
             {
@@ -100,6 +101,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
 
         [Authorize]
         [HttpDelete("{id}")]

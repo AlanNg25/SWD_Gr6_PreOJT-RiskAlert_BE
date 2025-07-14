@@ -1,4 +1,5 @@
-﻿using Applications.DTO.Response;
+﻿using Applications.DTO.Create;
+using Applications.DTO.Response;
 using Repositories.Models;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ namespace Services.Interface
         Task<GradeDto> GetByIdAsync(Guid id);
         Task<IEnumerable<GradeDto>> GetAllAsync();
         Task AddAsync(Grade grade);
-        Task UpdateAsync(Grade grade);
+        Task UpdateAsync(Guid id, GradeCreateDto gradeDto);
         Task DeleteAsync(Guid id);
         Task<GradeDetailDto> GetGradeDetailByIdAsync(Guid id);
         Task<IEnumerable<GradeDetailDto>> GetGradeDetailsByGradeIdAsync(Guid gradeId);

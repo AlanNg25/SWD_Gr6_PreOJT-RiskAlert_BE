@@ -39,6 +39,7 @@ namespace Repositories.Repositories
         public async Task AddAsync(Grade grade)
         {
             grade.GradeID = Guid.NewGuid();
+            grade.ScoreAverage = 0; // Default value, can be updated later
             grade.IsDeleted = false;
             await base.CreateAsync(grade);
         }

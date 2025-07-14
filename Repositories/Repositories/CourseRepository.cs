@@ -38,8 +38,9 @@ namespace Repositories.Repositories
 
         public async Task UpdateAsync(Course course)
         {
-            await UpdateAsync(course);
+            await base.UpdateAsync(course); // GỌI TỚI HÀM CỦA LỚP CHA
         }
+
 
         public async Task DeleteAsync(Guid id)
         {

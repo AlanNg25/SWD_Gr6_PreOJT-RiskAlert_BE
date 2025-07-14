@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Repositories.Interfaces;
 using Services.Interface;
 using Repositories.Repositories;
+using Applications.DTO.Create;
 
 namespace Services.Implement
 {
@@ -43,12 +44,23 @@ namespace Services.Implement
             await _unitOfWork.GradeRepository.AddAsync(grade);
         }
 
-        public async Task UpdateAsync(Grade grade)
+        public async Task UpdateAsync(Guid id, GradeCreateDto gradeDto)
         {
-            if (grade.ScoreAverage < 0 || grade.ScoreAverage > 10)
-                throw new ArgumentException("Score average must be between 0 and 10");
-            await _unitOfWork.GradeRepository.UpdateAsync(grade);
+            var existingGrade = await _unitOfWork.GradeRepository.GetGradeByIdAsync(id);
+            if (existingGrade == null)
+                throw new KeyNotFoundException("Grade not found");
+
+            if (gradeDto == null)
+                throw new ArgumentException("Invalid grade data");
+
+            // Cập nhật thông tin
+            existingGrade.StudentID = gradeDto.StudentID;
+            existingGrade.CourseID = gradeDto.CourseID;
+            existingGrade.GradeDate = gradeDto.GradeDate;
+
+            await _unitOfWork.GradeRepository.UpdateAsync(existingGrade);
         }
+
 
         public async Task DeleteAsync(Guid id)
         {

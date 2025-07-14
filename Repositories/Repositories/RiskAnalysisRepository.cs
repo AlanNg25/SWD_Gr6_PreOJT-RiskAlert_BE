@@ -38,7 +38,7 @@ namespace Repositories.Repositories
 
         public async Task UpdateAsync(RiskAnalysis riskAnalysis)
         {
-            await UpdateAsync(riskAnalysis);
+            await base.UpdateAsync(riskAnalysis);
         }
 
         public async Task DeleteAsync(Guid id)

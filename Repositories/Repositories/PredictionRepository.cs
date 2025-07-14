@@ -38,7 +38,7 @@ namespace Repositories.Repositories
 
         public async Task UpdateAsync(Prediction prediction)
         {
-            await UpdateAsync(prediction);
+            await base.UpdateAsync(prediction);
         }
 
         public async Task DeleteAsync(Guid id)
