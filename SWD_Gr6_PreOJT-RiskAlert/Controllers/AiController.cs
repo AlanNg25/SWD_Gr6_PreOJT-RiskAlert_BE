@@ -49,7 +49,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
             }
         }
 
-        [HttpGet("course/{courseId}/risks")]
+        [HttpGet("course/{courseId}")]
         public async Task<IActionResult> GetRiskAnalysisForCourseAsync(Guid courseId)
         {
             if (courseId == Guid.Empty)
@@ -66,7 +66,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
             }
         }
 
-        [HttpGet("student/{studentId}/warnings")]
+        [HttpGet("student/{studentId}")]
         public async Task<IActionResult> GetWarningsForStudentAsync(Guid studentId)
         {
             if (studentId == Guid.Empty)

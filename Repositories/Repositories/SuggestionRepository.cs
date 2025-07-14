@@ -38,7 +38,7 @@ namespace Repositories.Repositories
 
         public async Task UpdateAsync(Suggestion suggestion)
         {
-            await UpdateAsync(suggestion);
+            await base.UpdateAsync(suggestion);
         }
 
         public async Task DeleteAsync(Guid id)

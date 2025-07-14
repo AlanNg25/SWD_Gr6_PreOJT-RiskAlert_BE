@@ -49,6 +49,7 @@ namespace Applications.Mapper
             // Notification mappings
             CreateMap<Notification, NotificationDto>();
             CreateMap<NotificationCreateDto, Notification>();
+            CreateMap<NotificationDto, NotificationCreateDto>();
             CreateMap<Notification, NotificationWithCourseSemesterDto>()
                 .ForMember(dest => dest.NotificationID, opt => opt.MapFrom(src => src.NotificationID));
 
