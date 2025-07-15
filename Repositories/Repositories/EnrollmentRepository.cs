@@ -33,6 +33,7 @@ namespace Repositories.Repositories
         public async Task AddAsync(Enrollment enrollment)
         {
             enrollment.EnrollmentID = Guid.NewGuid();
+            enrollment.EnrollmentDate = DateTime.UtcNow;
             await CreateAsync(enrollment);
         }
 

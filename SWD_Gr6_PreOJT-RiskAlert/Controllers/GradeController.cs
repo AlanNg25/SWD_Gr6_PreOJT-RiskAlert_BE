@@ -1,4 +1,5 @@
 ﻿using Applications.DTO.Create;
+using Applications.DTO.Response;
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -155,12 +156,16 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
 
         [Authorize]
         [HttpPost("details")]
-        public async Task<IActionResult> CreateGradeDetail([FromBody] GradeDetail gradeDetail)
+        public async Task<IActionResult> CreateGradeDetail([FromBody] GradeDetailCreateDto gradeDetailDto)
         {
             try
             {
+                var gradeDetail = _mapper.Map<GradeDetail>(gradeDetailDto);
                 await _serviceProviders.GradeService.AddGradeDetailAsync(gradeDetail);
-                return CreatedAtAction(nameof(GetGradeDetailById), new { id = gradeDetail.GradeDetailID }, gradeDetail);
+
+                var gradeDetailView = await _serviceProviders.GradeService.GetGradeDetailByIdAsync(gradeDetail.GradeDetailID);
+                return Ok(_mapper.Map<GradeDetailDto>(gradeDetail));
+
             }
             catch (ArgumentException ex)
             {
@@ -172,15 +177,16 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
             }
         }
 
+
         [Authorize]
         [HttpPut("details/{id}")]
-        public async Task<IActionResult> UpdateGradeDetail(Guid id, [FromBody] GradeDetail gradeDetail)
+        public async Task<IActionResult> UpdateGradeDetail(Guid id, [FromBody] GradeDetailCreateDto gradeDetailDto)
         {
-            if (id != gradeDetail.GradeDetailID)
-                return BadRequest("GradeDetail ID mismatch");
-
             try
             {
+                var gradeDetail = _mapper.Map<GradeDetail>(gradeDetailDto);
+                gradeDetail.GradeDetailID = id;
+
                 await _serviceProviders.GradeService.UpdateGradeDetailAsync(gradeDetail);
                 return NoContent();
             }
@@ -193,6 +199,7 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+
 
         [Authorize]
         [HttpDelete("details/{id}")]

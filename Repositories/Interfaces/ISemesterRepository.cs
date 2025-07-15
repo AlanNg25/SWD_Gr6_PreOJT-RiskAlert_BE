@@ -1,4 +1,5 @@
 ﻿using Applications.DTO.Response;
+using Repositories.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +12,10 @@ namespace Repositories.Interfaces
     {
         Task<List<SemesterDto>> GetAllSemestersAsync();
         Task<SemesterDto> GetSemesterByIdAsync(Guid semesterId);
-        Task<int> CreateSemesterAsync(SemesterDto semester);
-        Task<int> UpdateSemesterAsync(SemesterDto semester);
+        Task<Guid> CreateSemesterAsync(Semester semester);
+        Task<int> UpdateSemesterAsync(Semester semester);
         Task<int> DeleteSemesterAsync(Guid semesterId);
         Task<List<SemesterDto>> SearchSemesterAsync(string semesterCode);
+        Task<Semester> GetSemesterByIdRawAsync(Guid semesterId);
     }
 }

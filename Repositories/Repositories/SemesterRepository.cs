@@ -45,34 +45,19 @@ namespace Repositories.Repositories
                 .FirstOrDefaultAsync(s => s.SemesterID == semesterId && !s.IsDeleted);
             return item ?? new SemesterDto();
         }
-        public async Task<int> CreateSemesterAsync(SemesterDto semester)
+        public async Task<Guid> CreateSemesterAsync(Semester semester)
         {
-            var item = new Semester
-            {
-                SemesterID = Guid.NewGuid(),
-                SemesterCode = semester.SemesterCode,
-                StartDate = semester.StartDate,
-                EndDate = semester.EndDate,
-                IsDeleted = semester.IsDeleted
-            };
-            _context.semester.Add(item);
+            _context.semester.Add(semester);
+            await _context.SaveChangesAsync();
+            return semester.SemesterID;
+        }
+
+        public async Task<int> UpdateSemesterAsync(Semester semester)
+        {
+            _context.semester.Update(semester);
             return await _context.SaveChangesAsync();
         }
-        public async Task<int> UpdateSemesterAsync(SemesterDto semester)
-        {
-            var item = new Semester
-            {
-                SemesterID = semester.SemesterID,
-                SemesterCode = semester.SemesterCode,
-                StartDate = semester.StartDate,
-                EndDate = semester.EndDate,
-                IsDeleted = semester.IsDeleted
-            };
-            _context.ChangeTracker.Clear();
-            var tracker = _context.Attach(semester);
-            tracker.State = EntityState.Modified;
-            return await _context.SaveChangesAsync();
-        }
+
         public async Task<int> DeleteSemesterAsync(Guid semesterId)
         {
             var item = await _context.semester
@@ -99,5 +84,11 @@ namespace Repositories.Repositories
                 .ToListAsync();
             return items ?? new List<SemesterDto>();
         }
+
+        public async Task<Semester> GetSemesterByIdRawAsync(Guid semesterId)
+        {
+            return await _context.semester.FirstOrDefaultAsync(s => s.SemesterID == semesterId && !s.IsDeleted);
+        }
+
     }
 }

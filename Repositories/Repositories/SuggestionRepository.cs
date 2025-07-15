@@ -33,11 +33,14 @@ namespace Repositories.Repositories
         public async Task AddAsync(Suggestion suggestion)
         {
             suggestion.SuggestionID = Guid.NewGuid();
+            suggestion.SentDate = DateTime.Now;
+            suggestion.ActionDate = DateTime.Now;
             await CreateAsync(suggestion);
         }
 
         public async Task UpdateAsync(Suggestion suggestion)
         {
+            suggestion.ActionDate = DateTime.Now;
             await base.UpdateAsync(suggestion);
         }
 

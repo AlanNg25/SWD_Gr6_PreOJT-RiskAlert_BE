@@ -1,4 +1,5 @@
-﻿using Applications.DTO.Response;
+﻿using Applications.DTO.Create;
+using Applications.DTO.Response;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Repositories.Models;
@@ -37,32 +38,36 @@ namespace SWD_Gr6_PreOJT_RiskAlert.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<ActionResult> CreateSemester([FromBody] SemesterDto semester)
+        public async Task<ActionResult> CreateSemester([FromBody] SemesterCreateDto semesterDto)
         {
-            if (semester == null)
+            if (semesterDto == null)
                 return BadRequest("Semester cannot be null.");
-            var rowsAffected = await _serviceProviders.SemesterService.CreateSemesterAsync(semester);
-            if(rowsAffected > 0)
+
+            var semesterId = await _serviceProviders.SemesterService.CreateSemesterAsync(semesterDto);
+            if (semesterId != Guid.Empty)
             {
-                var createdSemester = await _serviceProviders.SemesterService.GetSemesterByIdAsync(semester.SemesterID);
+                var createdSemester = await _serviceProviders.SemesterService.GetSemesterByIdAsync(semesterId);
                 return CreatedAtAction(nameof(GetSemesterById), new { id = createdSemester.SemesterID }, createdSemester);
             }
+
             return BadRequest("Creation failed.");
         }
 
+
         [Authorize]
         [HttpPut("{id:guid}")]
-        public async Task<ActionResult> UpdateSemester(Guid id, [FromBody] SemesterDto semester)
+        public async Task<ActionResult> UpdateSemester(Guid id, [FromBody] SemesterCreateDto semesterDto)
         {
-            if (semester == null)
+            if (semesterDto == null)
                 return BadRequest("Semester cannot be null.");
-            if (id != semester.SemesterID)
-                return BadRequest("ID mismatch.");
-            var rowsAffected = await _serviceProviders.SemesterService.UpdateSemesterAsync(semester);
+
+            var rowsAffected = await _serviceProviders.SemesterService.UpdateSemesterAsync(id, semesterDto);
             if (rowsAffected > 0)
                 return NoContent();
+
             return NotFound();
         }
+
 
         [Authorize]
         [HttpDelete("{id:guid}")]

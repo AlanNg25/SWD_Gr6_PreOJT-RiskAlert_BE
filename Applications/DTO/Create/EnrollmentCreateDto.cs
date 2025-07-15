@@ -12,6 +12,5 @@ namespace Applications.DTO.Create
         public Guid MajorID { get; set; }
         public Guid CourseID { get; set; }
         public int EnrollmentStatus { get; set; }
-        public DateTime EnrollmentDate { get; set; }
     }
 }

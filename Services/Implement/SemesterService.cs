@@ -1,4 +1,5 @@
-﻿using Applications.DTO.Response;
+﻿using Applications.DTO.Create;
+using Applications.DTO.Response;
 using AutoMapper;
 using Repositories.Models;
 using Repositories.Repositories;
@@ -21,10 +22,15 @@ namespace Services.Implement
             _mapper = mapper;
         }
 
-        public async Task<int> CreateSemesterAsync(SemesterDto semester)
+        public async Task<Guid> CreateSemesterAsync(SemesterCreateDto semesterDto)
         {
+            var semester = _mapper.Map<Semester>(semesterDto);
+            semester.SemesterID = Guid.NewGuid();
+            semester.IsDeleted = false;
+
             return await _unitOfWork.SemesterRepository.CreateSemesterAsync(semester);
         }
+
 
         public async Task<int> DeleteSemesterAsync(Guid semesterId)
         {
@@ -46,9 +52,13 @@ namespace Services.Implement
             return await _unitOfWork.SemesterRepository.SearchSemesterAsync(SemesterCode);
         }
 
-        public async Task<int> UpdateSemesterAsync(SemesterDto semester)
+        public async Task<int> UpdateSemesterAsync(Guid semesterId, SemesterCreateDto semesterDto)
         {
-            return await _unitOfWork.SemesterRepository.UpdateSemesterAsync(semester);
+            var existing = await _unitOfWork.SemesterRepository.GetSemesterByIdRawAsync(semesterId);
+            if (existing == null || existing.IsDeleted) return 0;
+
+            var updatedSemester = _mapper.Map(semesterDto, existing);
+            return await _unitOfWork.SemesterRepository.UpdateSemesterAsync(updatedSemester);
         }
     }
 }

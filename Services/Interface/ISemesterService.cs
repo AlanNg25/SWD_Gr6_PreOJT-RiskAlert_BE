@@ -1,4 +1,5 @@
-﻿using Applications.DTO.Response;
+﻿using Applications.DTO.Create;
+using Applications.DTO.Response;
 using Repositories.Models;
 
 namespace Services.Interface
@@ -7,8 +8,8 @@ namespace Services.Interface
     {
         Task<List<SemesterDto>> GetAllSemestersAsync();
         Task<SemesterDto> GetSemesterByIdAsync(Guid semesterId);
-        Task<int> CreateSemesterAsync(SemesterDto semester);
-        Task<int> UpdateSemesterAsync(SemesterDto semester);
+        Task<Guid> CreateSemesterAsync(SemesterCreateDto semesterDto);
+        Task<int> UpdateSemesterAsync(Guid semesterId, SemesterCreateDto semesterDto);
         Task<int> DeleteSemesterAsync(Guid semesterId);
         Task<List<SemesterDto>> SearchSemesterAsync(string SemesterCode);
     }

@@ -87,9 +87,13 @@ namespace Services.Implement
                 throw new ArgumentException("Score must be between 0 and 10");
             if (gradeDetail.ScoreWeight < 0 || gradeDetail.ScoreWeight > 1)
                 throw new ArgumentException("Score weight must be between 0 and 1");
+
+            await ValidateTotalScoreWeight(gradeDetail.GradeID, gradeDetail.ScoreWeight);
+
             await _unitOfWork.GradeRepository.AddGradeDetailAsync(gradeDetail);
             await RecalculateScoreAverageAsync(gradeDetail.GradeID);
         }
+
 
         public async Task UpdateGradeDetailAsync(GradeDetail gradeDetail)
         {
@@ -97,9 +101,13 @@ namespace Services.Implement
                 throw new ArgumentException("Score must be between 0 and 10");
             if (gradeDetail.ScoreWeight < 0 || gradeDetail.ScoreWeight > 1)
                 throw new ArgumentException("Score weight must be between 0 and 1");
+
+            await ValidateTotalScoreWeight(gradeDetail.GradeID, gradeDetail.ScoreWeight, gradeDetail.GradeDetailID);
+
             await _unitOfWork.GradeRepository.UpdateGradeDetailAsync(gradeDetail);
             await RecalculateScoreAverageAsync(gradeDetail.GradeID);
         }
+
 
         public async Task DeleteGradeDetailAsync(Guid id)
         {
@@ -120,7 +128,7 @@ namespace Services.Implement
             if (totalWeight > 0)
             {
                 var weightedSum = gradeDetails.Sum(d => d.Score * d.ScoreWeight);
-                average = weightedSum / totalWeight;
+                average = weightedSum;
             }
             else
             {
@@ -134,6 +142,19 @@ namespace Services.Implement
             grade.ScoreAverage = Math.Round(average, 2);      // làm tròn 2 chữ số thập phân (tuỳ bạn)
             await _unitOfWork.GradeRepository.UpdateAsync(grade);        // đã có sẵn trong repo
         }
+
+        private async Task ValidateTotalScoreWeight(Guid gradeId, decimal newWeight, Guid? updatingDetailId = null)
+        {
+            var existingDetails = await _unitOfWork.GradeRepository.GetGradeDetailsByGradeIdAsync(gradeId);
+
+            decimal totalWeight = existingDetails
+                .Where(d => updatingDetailId == null || d.GradeDetailID != updatingDetailId)
+                .Sum(d => d.ScoreWeight);
+
+            if (totalWeight + newWeight > 1)
+                throw new ArgumentException("Total ScoreWeight exceeds 1");
+        }
+
 
         public async Task<IEnumerable<GradeWithCourseSemesterDto>> GetByUserIdAsync(Guid userId)
         {
