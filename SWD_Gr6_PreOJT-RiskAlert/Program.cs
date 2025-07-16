@@ -2,14 +2,27 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Microsoft.SemanticKernel;
+using Microsoft.SemanticKernel.ChatCompletion;
+using Microsoft.SemanticKernel.Connectors.AzureOpenAI;
 using Repositories.DBContext;
 using Repositories.Interfaces;
 using Repositories.Repositories;
 using Services.Implement;
 using Services.Interface;
 using System.Text;
+
+//Add Kernel and Azure OpenAI dependencies
+var config = new ConfigurationBuilder()
+    .AddUserSecrets<Program>()
+    .Build();
+
+string azureOpenAIApiEndpoint = config["azureOpenAIEndpoint"];
+string azureOpenAIApiKey = config["azureOpenAIApiKey"];
+string modelDeploymentName = config["modelDeploymentName"];
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -50,6 +63,7 @@ builder.Services.AddAutoMapper(
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IServiceProviders, ServiceProviders>();
+builder.Services.AddScoped<IAiService, AiService>();
 
 // JWT Authentication
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -80,6 +94,27 @@ builder.Services.AddCors(options =>
                .AllowAnyMethod()
                .AllowAnyHeader();
     });
+});
+
+// Register IChatCompletionService as a singleton
+builder.Services.AddSingleton<IChatCompletionService>(sp =>
+{
+    return new AzureOpenAIChatCompletionService(
+        deploymentName: modelDeploymentName,
+        endpoint: azureOpenAIApiEndpoint,
+        apiKey: azureOpenAIApiKey
+        );
+});
+
+// Register Kernel as a transient service
+builder.Services.AddTransient<Kernel>(sp =>
+{
+    var kernelBuilder = Kernel.CreateBuilder();
+    kernelBuilder.AddAzureOpenAIChatCompletion(
+        deploymentName: modelDeploymentName,
+        endpoint: azureOpenAIApiEndpoint,
+        apiKey: azureOpenAIApiKey);
+    return kernelBuilder.Build();
 });
 
 var app = builder.Build();

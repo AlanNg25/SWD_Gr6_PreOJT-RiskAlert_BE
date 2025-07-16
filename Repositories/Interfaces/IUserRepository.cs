@@ -15,5 +15,6 @@ namespace Repositories.Interfaces
         Task AddAsync(User user);
         Task UpdateAsync(User user);
         Task DeleteAsync(Guid id);
+        Task<IEnumerable<User>> GetByRoleAsync(string role);
     }
 }
