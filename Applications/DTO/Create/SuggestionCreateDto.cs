@@ -10,6 +10,7 @@ namespace Applications.DTO.Create
     {
         public Guid RiskID { get; set; }
         public Guid AdvisorID { get; set; }
+        public DateTime? ActionDate { get; set; }
         public string? ActionType { get; set; }
         public string? Notes { get; set; }
     }
