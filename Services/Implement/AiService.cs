@@ -43,25 +43,34 @@ namespace Services.Implement
 
         public async Task AnalyzeAllStudentsAsync()
         {
+            var currentDate = DateTime.Now;
+            var semesters = await _serviceProviders.SemesterService.GetAllSemestersAsync();
+            var currentSemester = semesters.FirstOrDefault(s => s.StartDate <= currentDate && s.EndDate >= currentDate);
+            if (currentSemester == null)
+            {
+                return;
+            }
             var students = await _serviceProviders.UserService.GetByRoleAsync("Student");
 
             foreach (var student in students)
             {
                 var enrollments = await _serviceProviders.EnrollmentService.GetAllAsync();
-                enrollments = enrollments.Where(e => e.StudentID == student.UserID && !e.IsDeleted);
+                enrollments = enrollments.Where(e => e.StudentID == student.UserID
+                     && !e.IsDeleted
+                     && _serviceProviders.CourseService.GetByIdAsync(e.CourseID).Result.SemesterID == currentSemester.SemesterID).ToList();
+
                 foreach (var enrollment in enrollments)
                 {
                     var course = await _serviceProviders.CourseService.GetByIdAsync(enrollment.CourseID);
                     if (await IsStudentEligibleAsync(student, course))
                     {
-                        await AnalyzeStudentAsync(student.UserID, enrollment.EnrollmentID);
+                        await AnalyzeStudentAsync(student.UserID, course.CourseID);
                     }
                 }
             }
 
             await _unitOfWork.SaveChangesWithTransactionAsync();
 
-            // Schedule periodic analysis (BR02)
             // In production, use a background job (e.g., Hangfire) for weekly runs
         }
 
@@ -235,21 +244,40 @@ namespace Services.Implement
 
         private async Task<bool> IsStudentEligibleAsync(UserDto student, CourseDto course)
         {
-            if (student == null || course == null || student.Role != "Student")
-                return false;
+            if (student == null || course == null || student.Role != "Student") return false;
 
             var enrollments = await _serviceProviders.EnrollmentService.GetAllAsync();
             var studentEnrollments = enrollments.Where(e => e.StudentID == student.UserID && !e.IsDeleted);
-            var semesterCount = studentEnrollments
-                .GroupBy(e => e.CourseID)
-                .Count();
-            if (semesterCount > 5)
+
+            // Check if the student is enrolled in any course with Term >= 6
+            bool hasHighTermCourse = false;
+            foreach (var enrollment in studentEnrollments)
+            {
+                var enrolledCourse = await _serviceProviders.CourseService.GetByIdAsync(enrollment.CourseID);
+                if (enrolledCourse != null)
+                {
+                        var curriculum = await _serviceProviders.CurriculumService.GetBySubjectIdAsync(enrolledCourse.SubjectID);
+                        if (curriculum != null)
+                        {
+                            // Assume a method or property in curriculum that provides the term for the course
+                            int courseTerm = curriculum.TermNo;
+                            if (courseTerm >= 6)
+                            {
+                                hasHighTermCourse = true;
+                            break;
+                            }
+                        }
+                }
+            }
+            if (hasHighTermCourse)
                 return false;
 
             var semester = await _serviceProviders.SemesterService.GetSemesterByIdAsync(course.SemesterID);
             if (semester == null)
                 return false;
+
             return semester.StartDate <= DateTime.Now && semester.EndDate >= DateTime.Now;
+
         }
 
         private async Task<bool> IsOjtPrerequisiteAsync(CourseDto course)

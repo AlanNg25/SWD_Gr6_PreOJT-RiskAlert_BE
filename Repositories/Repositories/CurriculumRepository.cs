@@ -29,6 +29,11 @@ namespace Repositories.Repositories
             return await _context.curriculum
                 .FirstOrDefaultAsync(c => c.CurriculumID == id && !c.IsDeleted);
         }
+        public async Task<Curriculum> GetBySubjectIdAsync(Guid id)
+        {
+            return await _context.curriculum
+                .FirstOrDefaultAsync(c => c.SubjectID == id && !c.IsDeleted);
+        }
 
         public async Task AddAsync(Curriculum curriculum)
         {

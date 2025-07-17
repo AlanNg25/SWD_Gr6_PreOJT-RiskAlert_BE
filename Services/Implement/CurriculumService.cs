@@ -37,6 +37,14 @@ namespace Services.Implement
             return _mapper.Map<CurriculumDto>(curriculum);
         }
 
+        public async Task<CurriculumDto> GetBySubjectIdAsync(Guid subjectId)
+        {
+            var curriculums = await _unitOfWork.CurriculumRepository.GetBySubjectIdAsync(subjectId);
+            if (curriculums == null)
+                throw new KeyNotFoundException("Curriculum not found");
+            return _mapper.Map<CurriculumDto>(curriculums);
+        }
+
         public async Task AddAsync(CurriculumCreateDto curriculumDto)
         {
             var curriculum = _mapper.Map<Curriculum>(curriculumDto);

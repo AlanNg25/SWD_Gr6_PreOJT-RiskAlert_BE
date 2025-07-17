@@ -11,6 +11,7 @@ namespace Repositories.Interfaces
     {
         Task<IEnumerable<Curriculum>> GetAllAsync();
         Task<Curriculum> GetByIdAsync(Guid id);
+        Task<Curriculum> GetBySubjectIdAsync(Guid id);
         Task AddAsync(Curriculum curriculum);
         Task UpdateAsync(Curriculum curriculum);
         Task DeleteAsync(Guid id);

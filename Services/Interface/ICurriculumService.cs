@@ -12,6 +12,7 @@ namespace Services.Interface
     {
         Task<IEnumerable<CurriculumDto>> GetAllAsync();
         Task<CurriculumDto> GetByIdAsync(Guid id);
+        Task<CurriculumDto> GetBySubjectIdAsync(Guid subjectId);
         Task AddAsync(CurriculumCreateDto curriculumDto);
         Task UpdateAsync(Guid id, CurriculumCreateDto curriculumDto);
         Task DeleteAsync(Guid id);
