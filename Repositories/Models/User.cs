@@ -16,7 +16,7 @@ namespace Repositories.Models
         public string Role { get; set; } // e.g., "Student", "Teacher", "Admin"
         public string Code { get; set; }
         public int Status { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }//
         public bool IsDeleted { get; set; }
 
         public virtual Major Majors { get; set; }

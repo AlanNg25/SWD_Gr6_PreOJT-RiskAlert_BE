@@ -20,7 +20,7 @@ namespace Repositories.Repositories
         public async Task<IEnumerable<Suggestion>> GetAllAsync()
         {
             return await _context.suggestion
-            .Where(s => !s.IsDeleted)
+            .Where(s => !s.IsDeleted).OrderByDescending(s => s.SentDate)
                 .ToListAsync();
         }
 

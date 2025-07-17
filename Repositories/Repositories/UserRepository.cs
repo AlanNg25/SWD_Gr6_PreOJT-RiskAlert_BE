@@ -25,7 +25,7 @@ namespace Repositories.Repositories
         public async Task<IEnumerable<User>> GetAllAsync()
         {
             return await _context.user
-                .Where(u => !u.IsDeleted)
+                .Where(u => !u.IsDeleted).OrderByDescending(u => u.CreatedAt)
                 .ToListAsync();
         }
 
@@ -61,7 +61,7 @@ namespace Repositories.Repositories
         public async Task<IEnumerable<User>> GetByRoleAsync(string role)
         {
             return await _context.user
-                .Where(u => u.Role == role && !u.IsDeleted)
+                .Where(u => u.Role == role && !u.IsDeleted).OrderByDescending(u => u.CreatedAt)
                 .ToListAsync();
         }
     }

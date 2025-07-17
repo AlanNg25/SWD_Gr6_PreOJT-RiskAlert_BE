@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Repositories.Models
 {
-    public class Attendance
+    public class Attendance//sort theo Enrollment
     {
 
         [Key]

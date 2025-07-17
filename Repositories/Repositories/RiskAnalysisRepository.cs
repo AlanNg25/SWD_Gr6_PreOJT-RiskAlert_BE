@@ -20,7 +20,7 @@ namespace Repositories.Repositories
         public async Task<IEnumerable<RiskAnalysis>> GetAllAsync()
         {
             return await _context.riskAnalysis
-                .Where(r => !r.IsDeleted)
+                .Where(r => !r.IsDeleted).OrderByDescending(r => r.TrackingDate)
                 .ToListAsync();
         }
 

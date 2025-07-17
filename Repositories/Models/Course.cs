@@ -2,7 +2,7 @@
 
 namespace Repositories.Models
 {
-    public class Course
+    public class Course//sort theo Semester
     {
         [Key]
         public Guid CourseID { get; set; }

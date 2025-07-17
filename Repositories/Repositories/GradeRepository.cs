@@ -32,7 +32,7 @@ namespace Repositories.Repositories
                 .Include(g => g.GradeDetails)
                 .Include(g => g.Student)
                 .Include(g => g.Course)
-                .Where(g => !g.IsDeleted)
+                .Where(g => !g.IsDeleted).OrderByDescending(g => g.GradeDate)
                 .ToListAsync();
         }
 
@@ -105,7 +105,7 @@ namespace Repositories.Repositories
             return await _context.grade
                 .Include(g => g.Course)
                     .ThenInclude(c => c.Semester)
-                .Where(g => g.StudentID == userId && !g.IsDeleted && !g.Course.IsDeleted)
+                .Where(g => g.StudentID == userId && !g.IsDeleted && !g.Course.IsDeleted).OrderByDescending(g => g.GradeDate)
                 .ToListAsync();
         }
 

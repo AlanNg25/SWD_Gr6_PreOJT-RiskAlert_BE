@@ -14,7 +14,7 @@ namespace Repositories.Models
         public Guid RiskID { get; set; }
         public Guid EnrollmentID { get; set; }
         public string RiskLevel { get; set; }
-        public DateTime? TrackingDate { get; set; }
+        public DateTime? TrackingDate { get; set; }//
         public string? Notes { get; set; }
         public bool IsResolved { get; set; }
         public bool IsDeleted { get; set; }

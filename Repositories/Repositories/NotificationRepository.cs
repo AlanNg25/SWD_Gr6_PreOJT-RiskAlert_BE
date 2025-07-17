@@ -20,7 +20,7 @@ namespace Repositories.Repositories
         public async Task<IEnumerable<Notification>> GetAllAsync()
         {
             return await _context.notification
-                .Where(n => !n.IsDeleted)
+                .Where(n => !n.IsDeleted).OrderByDescending(n => n.SentTime)
             .ToListAsync();
         }
 
@@ -58,7 +58,7 @@ namespace Repositories.Repositories
                 .Include(n => n.Receiver.Enrollments.Where(e => !e.IsDeleted)) // filter trong navigation
                     .ThenInclude(e => e.Course)
                         .ThenInclude(c => c.Semester)
-                .Where(n => n.ReceiverID == userId && !n.IsDeleted)
+                .Where(n => n.ReceiverID == userId && !n.IsDeleted).OrderByDescending(n => n.SentTime)
                 .ToListAsync();
         }
 

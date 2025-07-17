@@ -20,7 +20,7 @@ namespace Repositories.Repositories
         public async Task<IEnumerable<Prediction>> GetAllAsync()
         {
             return await _context.prediction
-            .Where(p => !p.IsDeleted)
+            .Where(p => !p.IsDeleted).OrderByDescending(p => p.PredictionDate)
                 .ToListAsync();
         }
 

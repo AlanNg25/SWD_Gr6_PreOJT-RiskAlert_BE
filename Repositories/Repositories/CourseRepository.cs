@@ -19,8 +19,8 @@ namespace Repositories.Repositories
 
         public async Task<IEnumerable<Course>> GetAllAsync()
         {
-            return await _context.course
-            .Where(c => !c.IsDeleted)
+            return await _context.course.Include(c => c.Semester)
+            .Where(c => !c.IsDeleted).OrderByDescending(c => c.Semester.StartDate)
                 .ToListAsync();
         }
 

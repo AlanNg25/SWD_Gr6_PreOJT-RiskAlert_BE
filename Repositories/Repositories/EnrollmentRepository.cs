@@ -20,7 +20,7 @@ namespace Repositories.Repositories
         public async Task<IEnumerable<Enrollment>> GetAllAsync()
         {
             return await _context.enrollment
-            .Where(e => !e.IsDeleted)
+            .Where(e => !e.IsDeleted).OrderByDescending(e => e.EnrollmentDate)
                 .ToListAsync();
         }
 

@@ -9,7 +9,7 @@ namespace Repositories.Models
         public Guid PredictionID { get; set; }
         public Guid StudentID { get; set; }
         public decimal Probability { get; set; }
-        public DateTime PredictionDate { get; set; }
+        public DateTime PredictionDate { get; set; }//
         public string Details { get; set; }
         public bool IsDeleted { get; set; }
 

@@ -27,7 +27,7 @@ namespace Repositories.Repositories
                     StartDate = s.StartDate,
                     EndDate = s.EndDate,
                     IsDeleted = s.IsDeleted,
-                })
+                }).OrderByDescending(s => s.StartDate)
                 .ToListAsync();
             return items ?? new List<SemesterDto>();
         }
@@ -80,7 +80,7 @@ namespace Repositories.Repositories
                     StartDate = s.StartDate,
                     EndDate = s.EndDate,
                     IsDeleted = s.IsDeleted,
-                })
+                }).OrderByDescending(s => s.StartDate)
                 .ToListAsync();
             return items ?? new List<SemesterDto>();
         }

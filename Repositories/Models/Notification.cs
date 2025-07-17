@@ -11,7 +11,7 @@ namespace Repositories.Models
         public string Content { get; set; }
         public int Status { get; set; }
         public string Attachment { get; set; }
-        public DateTime SentTime { get; set; }
+        public DateTime SentTime { get; set; }//
         public bool IsDeleted { get; set; }
 
         public virtual User Receiver { get; set; }

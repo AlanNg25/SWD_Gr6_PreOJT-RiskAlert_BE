@@ -22,7 +22,8 @@ namespace Repositories.Repositories
         public async Task<IEnumerable<Attendance>> GetAllAsync()
         {
             return await _context.attendance
-                .Where(a => !a.IsDeleted)
+                .Include(a => a.Enrollment)
+                .Where(a => !a.IsDeleted).OrderByDescending(a => a.Enrollment.EnrollmentDate)
             .ToListAsync();
         }
 
@@ -59,7 +60,7 @@ namespace Repositories.Repositories
                 .Include(a => a.Enrollment)
                     .ThenInclude(e => e.Course)
                         .ThenInclude(c => c.Semester)
-                .Where(a => a.Enrollment.StudentID == userId && !a.IsDeleted && !a.Enrollment.IsDeleted && !a.Enrollment.Course.IsDeleted)
+                .Where(a => a.Enrollment.StudentID == userId && !a.IsDeleted && !a.Enrollment.IsDeleted && !a.Enrollment.Course.IsDeleted).OrderByDescending(a => a.Enrollment.EnrollmentDate)
                 .ToListAsync();
         }
 
