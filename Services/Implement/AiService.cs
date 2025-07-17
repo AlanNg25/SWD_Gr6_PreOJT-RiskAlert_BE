@@ -164,7 +164,6 @@ namespace Services.Implement
                 {
                     RiskID = createdRiskAnalysis.RiskID,
                     AdvisorID = course.TeacherID,
-                    SentDate = DateTime.Now,
                     ActionType = aiResult.RecommendationType,
                     Notes = aiResult.Recommendation
                 };
